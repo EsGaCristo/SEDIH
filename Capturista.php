@@ -1,26 +1,25 @@
 <?php 
 	include("src/database/conexion_bd.php");
 	$mysqli = new mysqli("localhost","root","","sedih","3306");
-	//$datos= $_GET["mensaje"];
-
 	if (isset($_GET["mensaje"])) {
 		setcookie("datos", $_GET["mensaje"], time() + 3600); // cookie durará 1 hora
 	}
 	$datos = isset($_COOKIE["datos"]) ? $_COOKIE["datos"] : '';
-	
-	$resultado = $mysqli -> query ("SELECT idTipo , nombre FROM tipoHabitacion  ");
+
+	$resultado = $mysqli -> query ("SELECT idTipo , nombre FROM tipoHabitacion where idHotel = $datos ");
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<script lenguage= "javascript" src="jquery-3.6.4.js"></script>
+	
 	<script lenguage="javascript">
 		$(document).ready(function(){
 			
 			$("#tipoHab").change(function(){
 				$("#tipoHab option:selected").each(function(){
 					idTipo = $(this).val();
-					$.post("crud/getHabitaciones.php",{idTipo:idTipo
+					$.post("crud/getHabitaciones.php?",{idTipo:idTipo
 					},function(data){			
 						$("#idHab").html(data);
 					});
@@ -28,6 +27,7 @@
 			})
 		});
 	</script>
+	
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>SEDIH</title>
@@ -41,9 +41,9 @@
 			$query = $mysqli -> query ("SELECT nombre FROM hotel where idHotel =  '$datos' ");
 			while ($valores = mysqli_fetch_array($query)) {
 			echo '<div style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: center; color: white; font-family: Impact, Haettenschweiler, Arial Narrow Bold, sans-serif; font-size: 35px;"> Hotel '.$valores['nombre'].'</div>';
-		}
+			}
 		?>
-		
+
 		<!----------------------------------------------Codigo de formulario---------------------------------------------------->
 		<form class="row g-3" style="margin-left: 500px; margin-right: 500px; margin-top: 20px; background: transparent; border-radius: 20px;  backdrop-filter: blur(30px);" method="POST" action="insertar.php">
 		
@@ -81,7 +81,6 @@
 						<option value="<?php echo $row['idTipo']; ?>"><?php echo $row['nombre'];?></option>
 					<?php } ?>
 				</select>
-				<!--	<input type="text" class="form-control" id="inputAddress" style="margin-right: 20px;" name="tipoHab" required>-->
 			</div>
 
 			<div class="col-md-6">
@@ -89,7 +88,6 @@
 				<select class="form-select" aria-label="Default select example" name="idHab" id="idHab" required>
 					<option value = "0">Seleccionar</option>
 				</select>
-				<!-- #region <input type="number" class="form-control" id="inputEmail4" style="margin-right: 20px;" name="idHab" required>--></div>
 			</div>
 
 		
@@ -98,51 +96,5 @@
 			</div>
 			
 		</form>	
-		<!----------------------------------------------Codigo de la tabla------------------------------------------------
-		<table class="table table-striped" style="width: 650px; height: 250px; margin-top: 35px; margin-left: 500px; margin-right: 500px; background: transparent; backdrop-filter: blur(30px);">
-			<thead>
-				<tr>
-					<th scope="col">Id habitacion</th>
-					<th scope="col">Estado</th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<tr>
-					<th scope="row">1</th>
-					<td>
-						<select class="form-select" aria-label="Default select example">
-							<option selected>Elegir</option>
-							<option value="1">Disponible</option>
-							<option value="2">Ocupada</option>
-						</select>
-					</td>
-				</tr>
-
-				<tr>
-					<th scope="row">2</th>
-					<td>
-						<select class="form-select" aria-label="Default select example">
-							<option selected>Elegir</option>
-							<option value="1">Disponible</option>
-							<option value="2">Ocupada</option>
-						</select>
-					</td>
-				</tr>
-
-				<tr>
-					<th scope="row">3</th>
-					<td>
-						<select class="form-select" aria-label="Default select example">
-							<option selected>Elegir</option>
-							<option value="1">Disponible</option>
-							<option value="2">Ocupada</option>
-						</select>
-					</td>
-				</tr>
-			</tbody>
-			
-
-		</table> ---->
 </body>
 </html>

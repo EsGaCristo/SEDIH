@@ -3,8 +3,8 @@
     $mysqli = new mysqli("localhost","root","","sedih","3306");
 
     $idTipo = $_POST['idTipo'];
-    //&& idHotel = 2
-    $queryM = "SELECT codigoHabitacion FROM habitacion WHERE idTipo= '$idTipo' && estado = 'DISPONIBLE' && idHotel = 1 ";
+    
+    $queryM = ("SELECT codigoHabitacion FROM habitacion WHERE idTipo= '$idTipo' && estado = 'DISPONIBLE' ");
     $resultadoH  = $mysqli->query($queryM);
     
     echo "<option value = '0'>Seleccionar</option>";
