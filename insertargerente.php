@@ -6,11 +6,11 @@ include("Capturista.php");
     $Tipo   = $_POST['tipoHabitacion'];
     $estado = $_POST['estado'];
     $costo  = $_POST['CostoHabitacion'];
-    $idHotel = $_POST['$datos'];
+    $idHotel = $_POST['$hotelid'];
 
     $insertar = 
     "INSERT INTO habitacion (codigoHabitacion, numeroHabitacion, idTipo, estado, costo, idHotel) 
-    VALUES ('$id',$num,$Tipo,'$estado', $costo,$idHotel)";
+    VALUES ('$id',$num,$Tipo,'$estado', $costo, $idHotel)";
 
 $resultado = mysqli_query($conexion, $insertar);
 

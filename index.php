@@ -1,6 +1,6 @@
 <?php 
         include("src/database/conexion_bd.php");
-        include("crud/controlador.php");
+        include("controlador.php");
 ?>
 
 <!DOCTYPE html>
@@ -10,10 +10,10 @@
   <title>Asosiacion de hoteles y Moteles</title>
 </head>
 <body>
-    <section>
+    <section> 
         <div class="form-box">
             <div class="form-value">
-                <form method="post" action="">
+                <form method="post" action="controlador.php">
                     <h2>SEDIH</h2>
                     <h2>Iniciar sesion</h2>
                     <div class="inputbox">

@@ -1,7 +1,7 @@
 <?php 
         include("src/database/conexion_bd.php");
 		$mysqli = new mysqli("localhost","root","","sedih","3306");
-		$HOTELID=$_GET["mensaje"];
+		$hotelid = isset($_GET['hotelid']) ? $_GET['hotelid'] : '';
 		
 ?>
 <!DOCTYPE html>
@@ -92,7 +92,7 @@
 			<img src="./src/assets/Boton.png" alt="Eliminar" style="width: 30px;">
 		</button>   
 	   </td>
-	   <td>
+		<td>
 	   <button style="color: white; background-color: transparent;">
 			<img src="./src/assets/Actualizar.png" alt="Actualizar" style="width: 20px;">
 		</button>  
