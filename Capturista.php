@@ -1,12 +1,27 @@
 <?php 
 	include("src/database/conexion_bd.php");
 	$mysqli = new mysqli("localhost","root","","sedih","3306");
+
+	
 	if (isset($_GET["mensaje"])) {
 		setcookie("datos", $_GET["mensaje"], time() + 3600); // cookie durará 1 hora
 	}
 	$datos = isset($_COOKIE["datos"]) ? $_COOKIE["datos"] : '';
 
+	if($datos == null){
+		header("Refresh:0");
+	}
 	$resultado = $mysqli -> query ("SELECT idTipo , nombre FROM tipoHabitacion where idHotel = $datos ");
+	
+	//================ salir de la session
+	if (isset($_POST["eliminar_cookie"])) {
+		// Si se hizo clic en el botón, eliminar la cookie
+		setcookie("datos", "", time() - 3600);
+		// Redirigir al usuario a la misma página
+		header("Location:index.php");
+		exit;
+	}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,5 +111,13 @@
 			</div>
 			
 		</form>	
+		<form method="post" class="row g-3" style="margin-left: 500px; margin-right: 500px; margin-top: 20px; background: transparent; border-radius: 20px;  backdrop-filter: blur(30px);" action="Capturista.php">
+			<div class="col-12" style="text-align: center; margin-top: 20px; margin-bottom: 10px; display: flex; justify-content: center; ">
+				<button type="submit" class="btn btn-primary" name="eliminar_cookie">Cerrar sesión</button>
+			</div>
+		</form>
+
+
+
 </body>
 </html>

@@ -12,6 +12,10 @@ include ("src/database/conexion_bd.php");
 
 $resultado = mysqli_query($conexion, $insertar);
 
+$actualizar = "UPDATE habitacion set estado = 'OCUPADO' WHERE codigoHabitacion = '$idHabitacion' ";
+
+$update = mysqli_query($conexion, $actualizar);
+
 if($resultado){
     echo '<script> alert ("Se han registrado los datos");';
     header("location: Capturista.php");

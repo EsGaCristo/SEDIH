@@ -6,8 +6,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="index.css">
-  <title>Asosiacion de hoteles y Moteles</title>
+<link rel="stylesheet" href="index.css">
+<title>Asosiacion de hoteles y Moteles</title>
 </head>
 <body>
     <section>
