@@ -1,12 +1,10 @@
 <?php 
 	include("src/database/conexion_bd.php");
 	$mysqli = new mysqli("localhost","root","","sedih","3306");
-	if (isset($_GET["mensaje"])) {
-		setcookie("datos", $_GET["mensaje"], time() + 3600); // cookie durará 1 hora
-	}
-	$datos = isset($_COOKIE["datos"]) ? $_COOKIE["datos"] : '';
 
-	$resultado = $mysqli -> query ("SELECT idTipo , nombre FROM tipoHabitacion where idHotel = $datos ");
+	$hotelid = isset($_GET['hotelid']) ? $_GET['hotelid'] : '';
+
+	$resultado = $mysqli -> query ("SELECT idTipo , nombre FROM tipoHabitacion where idHotel = '$hotelid' ");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,14 +36,14 @@
 <body style="background: url('./src/assets/Fondo3.jpg')no-repeat; background-position: center; background-size: cover;">
 		<div style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: center; color: white; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 35px;"> BIENVENIDO A SEDIH</div>
 		<?php	
-			$query = $mysqli -> query ("SELECT nombre FROM hotel where idHotel =  '$datos' ");
+			$query = $mysqli -> query ("SELECT nombre FROM hotel where idHotel =  '$hotelid' ");
 			while ($valores = mysqli_fetch_array($query)) {
 			echo '<div style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: center; color: white; font-family: Impact, Haettenschweiler, Arial Narrow Bold, sans-serif; font-size: 35px;"> Hotel '.$valores['nombre'].'</div>';
 			}
 		?>
 
 		<!----------------------------------------------Codigo de formulario---------------------------------------------------->
-		<form class="row g-3" style="margin-left: 500px; margin-right: 500px; margin-top: 20px; background: transparent; border-radius: 20px;  backdrop-filter: blur(30px);" method="POST" action="insertar.php">
+		<form class="row g-3" style="margin-left: 500px; margin-right: 500px; margin-top: 20px; background: transparent; border-radius: 20px;  backdrop-filter: blur(30px);" action="insertar.php?id=<?php echo $hotelid ?>" method="post">
 		
 			<div class="col-md-6">
 				<label for="inputEmail4" class="form-label">Fecha de registro</label>
@@ -95,6 +93,25 @@
 				<button type="submit" class="btn btn-primary" name="btnRegistrar">Registrar</button>
 			</div>
 			
+
 		</form>	
+
+		<?php
+		if (isset($_POST['btnSalir'])) { // si se ha enviado el formulario
+			// redirigir a index.php
+			mysqli_close($mysqli);
+			header("Location: index.php?");
+			exit; // asegurarse de que el script se detenga después de redirigir
+		}
+		?>
+		<form class="row g-3" style="margin-left: 500px; margin-right: 500px; margin-top: 20px; background: transparent; border-radius: 20px;  backdrop-filter: blur(30px);" method="POST">
+							<!-- mostrar el botón en el formulario -->
+							<div class="button" style="text-align: center; margin-top: 20px; margin-bottom: 10px;">
+					<button type="submit" class="btn btn-primary" name="btnSalir">Salir</button>				
+			</div>
+		</form>	
+
 </body>
+
+
 </html>

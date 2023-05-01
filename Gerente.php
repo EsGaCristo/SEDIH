@@ -22,7 +22,12 @@
 		
 		<div class="col-md-13">
 			<div style=" float: left; background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: LEFT; color: WHITE; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 25px;"> CUENTA: GERENTE</div>
-			<div style=" float: RIGHT; background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: RIGHT; color: WHITE; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 25px;"> HOTEL: LA LOMA</div>
+			<?php	
+			$query = $mysqli -> query ("SELECT nombre FROM hotel where idHotel =  '$hotelid' ");
+			while ($valores = mysqli_fetch_array($query)) {
+			echo '<div style=" float: RIGHT; background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: RIGHT; color: WHITE; font-family: Impact, Haettenschweiler, Arial Narrow Bold, sans-serif; font-size: 25px;">Hotel '.$valores['nombre'].'</div>';
+			}
+		?>
 			<div style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: CENTER; color: WHITE; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 25px;"> HABITACIONES</div>
 		</div>	
     <!------------------------------------------------HABITACIONES------------------------------------------------------------------------------------->
@@ -39,7 +44,7 @@
 					<select class="form-select" aria-label="Default select example" name="tipoHabitacion" id="tipoHabitacion" required>
 						<option value = "0">Seleccionar</option>
 							<?php	
-								$query = $mysqli -> query ("SELECT * FROM tipohabitacion ");
+								$query = $mysqli -> query ("SELECT * FROM tipohabitacion where idHotel = $hotelid ");
 								while ($valores = mysqli_fetch_array($query)) {
 									echo '<option value="'.$valores['idTipo'].'">'.$valores['nombre'].'</option>';
 								}
@@ -62,70 +67,70 @@
 		</div>
 	</form>		
 	<!------------------------------------------------Registro Cliente------------------------------------------------------------------------------------->
-	<form class="row g-3" style="margin-left: 400px; margin-right: 400px; margin-top: 20px; background: transparent; border-radius: 20px;  backdrop-filter: blur(35px);">	
-<div style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: CENTER; color: WHITE; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 25px;"> REGISTRO CLIENTE</div>
+<form class="row g-3" style="margin-left: 400px; margin-right: 400px; margin-top: 20px; background: transparent; border-radius: 20px;  backdrop-filter: blur(35px);">	
+	<div style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: CENTER; color: WHITE; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 25px;"> REGISTRO CLIENTE</div>
 	
-	<div style="background-color: transparent;">
-  <table style="color: white; width: 100%;">
-	  <tr>
-      <td>ID</td>
-      <td>FECHA DE ENTRADA</td>
-      <td>FECHA DE SALIDA</td>
-      <td>MOTIVO</td>
-      <td>LUGAR</td>
-      <td>HABITACION</td>
-      <td>TIPO</td>
-	  <td>Eliminar </td>
-	  <td>Actualizar</td>
-    </tr>
-
-	<tr>
-	  <td>1</td>
-      <td style="text-align: center;">26/04/2023</td>
-      <td style="text-align: center;">29/04/2023</td>
-      <td>negocios</td>
-      <td>Tepic</td>
-      <td style="text-align: center;">1</td>
-      <td style="text-align: center;">1</td>
-	  <td>
-	  	<button style="color: white; background-color: transparent;">
-			<img src="./src/assets/Boton.png" alt="Eliminar" style="width: 30px;">
-		</button>   
-	   </td>
-		<td>
-	   <button style="color: white; background-color: transparent;">
-			<img src="./src/assets/Actualizar.png" alt="Actualizar" style="width: 20px;">
-		</button>  
-	   </td>
-	</tr>	
-
-	</tr>	
-
-	<tr>
-	  <td>1</td>
-      <td style="text-align: center;">26/04/2023</td>
-      <td style="text-align: center;">29/04/2023</td>
-      <td>negocios</td>
-      <td>Tepic</td>
-      <td style="text-align: center;">1</td>
-      <td style="text-align: center;">1</td>
-	  <td>
-	  	<button style="color: white; background-color: transparent;">
-			<img src="./src/assets/Boton.png" alt="Eliminar" style="width: 30px;">
-		</button>   
-	   </td>
-	   <td>
-	   <button style="color: white; background-color: transparent;">
-			<img src="./src/assets/Actualizar.png" alt="Actualizar" style="width: 20px;">
-		</button>  
-	   </td>
-	</tr>	
-
-  </table>
-
-</div>
-</form>		
+		<div style="background-color: transparent;">
 		
+			<table style="color: white; width: 100%;">
+				<tr>
+					<td>ID</td>
+					<td>FECHA DE ENTRADA</td>
+					<td>FECHA DE SALIDA</td>
+					<td>MOTIVO</td>
+					<td>LUGAR</td>
+					<td>HABITACION</td>
+					<td>TIPO</td>
+					<td>Eliminar </td>
+					<td>Actualizar</td>
+				</tr>
+
+				<tr>
+					<td>1</td>
+					<td style="text-align: center;">26/04/2023</td>
+					<td style="text-align: center;">29/04/2023</td>
+					<td>negocios</td>
+					<td>Tepic</td>
+					<td style="text-align: center;">1</td>
+					<td style="text-align: center;">1</td>
+					<td>
+						<button style="color: white; background-color: transparent;">
+							<img src="./src/assets/Boton.png" alt="Eliminar" style="width: 30px;">
+						</button>   
+					</td>
+					
+					<td>
+						<button style="color: white; background-color: transparent;">
+							<img src="./src/assets/Actualizar.png" alt="Actualizar" style="width: 20px;">
+						</button>  
+					</td>
+				</tr>	
+
+				<tr>
+					<td>1</td>
+					<td style="text-align: center;">26/04/2023</td>
+					<td style="text-align: center;">29/04/2023</td>
+					<td>negocios</td>
+					<td>Tepic</td>
+					<td style="text-align: center;">1</td>
+					<td style="text-align: center;">1</td>
+					<td>
+					<button style="color: white; background-color: transparent;">
+							<img src="./src/assets/Boton.png" alt="Eliminar" style="width: 30px;">
+						</button>   
+					</td>
+					<td>
+					<button style="color: white; background-color: transparent;">
+							<img src="./src/assets/Actualizar.png" alt="Actualizar" style="width: 20px;">
+						</button>  
+					</td>
+				</tr>	
+			</table>
+		</div>
+	</div>
+</form>		
+
+	
 
 </body>
 </html>
