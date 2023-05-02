@@ -129,8 +129,8 @@ $hotelid = isset($_GET['hotelid']) ? $_GET['hotelid'] : '';
 		</div>
 	</form>
 
-	<!------------------------------------------------Registro Cliente------------------------------------------------------------------------------------->
-	<form class="row g-3"
+	<!------------------------------------------------ Actualizar / Registro Cliente------------------------------------------------------------------------------------->
+	<form class="row g-3" method='post' action="actualizarRegistrosGerente.php?id=<?php echo $hotelid?>" 
 		style="margin-left: 400px; margin-right: 400px; margin-top: 20px; background: transparent; border-radius: 20px;  backdrop-filter: blur(35px);">
 		<div
 			style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: CENTER; color: WHITE; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 25px;">
@@ -143,23 +143,23 @@ $hotelid = isset($_GET['hotelid']) ? $_GET['hotelid'] : '';
 				<td>FECHA DE SALIDA</td>
 				<td>MOTIVO</td>
 				<td>LUGAR</td>
-				<td>HABITACION</td>
-				<td>TIPO</td>
+				<!--<td>HABITACION</td> -->
+				<!--<td>TIPO</td>-->
 			</tr>
 
 			<tr>
-				<td><input type="text" class="form-control" name="id"></td>
-				<td><input type="text" class="form-control" name="fEntrada"></td>
-				<td><input type="text" class="form-control" name="fSalida"></td>
-				<td><input type="text" class="form-control" name="Motivoo"></td>
+				<td><input type="text" class="form-control" name="idRegistro"></td>
+				<td><input type="date" class="form-control" name="fEntrada"></td>
+				<td><input type="date" class="form-control" name="fSalida"></td>
+				<td><input type="text" class="form-control" name="Motivo"></td>
 				<td><input type="text" class="form-control" name="Lugar"></td>
-				<td><input type="text" class="form-control" name="Habitacion"></td>
-				<td><input type="text" class="form-control" name="Tipoo"></td>
+				<!--<td><input type="text" class="form-control" name="Habitacion"></td> -->
+				<!--<td><input type="text" class="form-control" name="Tipo"></td> -->
 			</tr>
 		</table>
 
 		<div class="col-3" style="float: center; text-align: center; margin-top: 15px; margin-bottom: 200 px;">
-			<button type="submit" class="btn btn-primary" name="btnBorrar" style="margin-left: 800;">Actualizar</button>
+			<button type="submit" class="btn btn-primary" name="btnActualizar" style="margin-left: 800;">Actualizar</button>
 		</div>
 	</form>
 

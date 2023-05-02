@@ -1,6 +1,5 @@
 <?php
 $id = $_GET['id'];
-
 include("src/database/conexion_bd.php");
 $lugarProce = $_POST['lugarProc'];
 $fechaSal = $_POST['fechaSalida'];
