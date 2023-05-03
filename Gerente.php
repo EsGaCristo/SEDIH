@@ -24,7 +24,7 @@ $hotelid = isset($_GET['hotelid']) ? $_GET['hotelid'] : '';
 	<!----------------------------------------------Codigo de formulario-------------------------------------------------------------------------->
 	<form class="row g-3"
 		style="margin-left: 400px; margin-right: 400px; margin-top: 20px; background: transparent; border-radius: 20px;  backdrop-filter: blur(35px);"
-		method="post" action="insertargerente.php">
+		action="insertargerente.php?id=<?php echo $hotelid ?>" method="post">
 
 		<div class="col-md-13">
 			<div
@@ -163,16 +163,6 @@ $hotelid = isset($_GET['hotelid']) ? $_GET['hotelid'] : '';
 		</div>
 	</form>
 
-
-
-	<form class="row g-3"
-		style="margin-left: 500px; margin-right: 500px; margin-top: 20px; background: transparent; border-radius: 20px;  backdrop-filter: blur(30px);"
-		method="POST" action="index.php">
-		<!-- mostrar el botón en el formulario -->
-		<div class="button" style="text-align: center; margin-top: 20px; margin-bottom: 10px;">
-			<button type="submit" class="btn btn-primary" name="btnSalirGerente">Consultar</button>
-		</div>
-	</form>
 	<form class="row g-3"
 		style="margin-left: 500px; margin-right: 500px; margin-top: 20px; background: transparent; border-radius: 20px;  backdrop-filter: blur(30px);"
 		method="POST" action="index.php">

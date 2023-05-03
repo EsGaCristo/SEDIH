@@ -11,7 +11,7 @@ include ("src/database/conexion_bd.php");
 
     $insertar = 
     "INSERT INTO habitacion (codigoHabitacion, numeroHabitacion, idTipo, estado, costo, idHotel) 
-    VALUES ('$idH',$num,$Tipo,'$estado', $costo, 1)";
+    VALUES ('$idH',$num,$Tipo,'$estado', $costo, $id)";
 
 $resultado = mysqli_query($conexion, $insertar);
 
