@@ -130,7 +130,7 @@ $hotelid = isset($_GET['hotelid']) ? $_GET['hotelid'] : '';
 	</form>
 
 	<!------------------------------------------------ Actualizar / Registro Cliente------------------------------------------------------------------------------------->
-	<form class="row g-3" method='post' action="actualizarRegistrosGerente.php?id=<?php echo $hotelid?>" 
+	<form class="row g-3" method='post' action="actualizarRegistrosGerente.php?id=<?php echo $hotelid ?>"
 		style="margin-left: 400px; margin-right: 400px; margin-top: 20px; background: transparent; border-radius: 20px;  backdrop-filter: blur(35px);">
 		<div
 			style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: CENTER; color: WHITE; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 25px;">
@@ -157,14 +157,22 @@ $hotelid = isset($_GET['hotelid']) ? $_GET['hotelid'] : '';
 				<!--<td><input type="text" class="form-control" name="Tipo"></td> -->
 			</tr>
 		</table>
-
 		<div class="col-3" style="float: center; text-align: center; margin-top: 15px; margin-bottom: 200 px;">
-			<button type="submit" class="btn btn-primary" name="btnActualizar" style="margin-left: 800;">Actualizar</button>
+			<button type="submit" class="btn btn-primary" name="btnActualizar"
+				style="margin-left: 800;">Actualizar</button>
 		</div>
 	</form>
 
 
-	
+
+	<form class="row g-3"
+		style="margin-left: 500px; margin-right: 500px; margin-top: 20px; background: transparent; border-radius: 20px;  backdrop-filter: blur(30px);"
+		method="POST" action="index.php">
+		<!-- mostrar el botón en el formulario -->
+		<div class="button" style="text-align: center; margin-top: 20px; margin-bottom: 10px;">
+			<button type="submit" class="btn btn-primary" name="btnSalirGerente">Consultar</button>
+		</div>
+	</form>
 	<form class="row g-3"
 		style="margin-left: 500px; margin-right: 500px; margin-top: 20px; background: transparent; border-radius: 20px;  backdrop-filter: blur(30px);"
 		method="POST" action="index.php">
@@ -173,6 +181,7 @@ $hotelid = isset($_GET['hotelid']) ? $_GET['hotelid'] : '';
 			<button type="submit" class="btn btn-primary" name="btnSalirGerente">Salir</button>
 		</div>
 	</form>
+
 
 </body>
 
