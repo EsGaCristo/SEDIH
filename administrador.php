@@ -230,8 +230,5 @@ $resultado = $mysqli->query("SELECT * FROM hotel ");
 			<button type="submit" class="btn btn-primary" name="btnSalirGerente">Salir</button>
 		</div>
 	</form>
-
-
-
 </body>
 </html>
