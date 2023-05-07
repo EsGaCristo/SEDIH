@@ -28,9 +28,9 @@ $hotelid = isset($_GET['hotelid']) ? $_GET['hotelid'] : '';
 
 <body style="background: url('./src/assets/Fondo4.jpg')no-repeat; background-position: center;">
 
-	<div
-		style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: center; color: white; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 35px;">
-		BIENVENIDO A SEDIH</div>
+	<div style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: center; color: white; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 35px;">
+		BIENVENIDO A SEDIH
+	</div>
 
 	<!----------------------------------------------Codigo de formulario-------------------------------------------------------------------------->
 	<form class="row g-3"

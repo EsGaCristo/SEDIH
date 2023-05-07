@@ -1,4 +1,5 @@
 <?php
+include("src/database/conexion_bd.php");
 if (isset($_POST['accion'])) {
   if ($_POST['accion'] == 'borrar') {
     if (isset($_POST['accion'])) {

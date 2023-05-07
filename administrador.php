@@ -3,6 +3,7 @@ include("src/database/conexion_bd.php");
 $mysqli = new mysqli("localhost", "root", "", "sedih", "3306");
 $hotelid = isset($_GET['hotelid']) ? $_GET['hotelid'] : '';
 $resultado = $mysqli->query("SELECT * FROM hotel ");
+
 ?>
 
 <!DOCTYPE html>
