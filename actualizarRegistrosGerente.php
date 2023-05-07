@@ -2,24 +2,24 @@
 $id = $_GET['id'];
 
 include("src/database/conexion_bd.php");
-$idRegistro = $_POST['idRegistro'];
-$fEntrada = $_POST['fEntrada'];
-$fSalida = $_POST['fSalida'];
-$Motivo = $_POST['Motivo'];
-$Lugar = $_POST['Lugar'];
-//$Habitacion = $_POST['Habitacion'];
-//$Tipo = $_POST['Tipo'];
+$idHotel = $_POST['id'];
+$nombre = $_POST['nombre'];
+$categoria = $_POST['Categoria'];
+$domicilio = $_POST['Domicilio'];
+$ocupacion = $_POST['Ocupacion'];
+$ubicacion = $_POST['Ubicacion'];
+$noHabitaciones = $_POST['NoHabitaciones'];
 
-echo"<script>console.log('$idRegistro')</script>";
+echo"<script>console.log('$idHotel')</script>";
 
-$actualizar = "UPDATE registrocliente set fechaHRegistro = '$fEntrada' , fechaSalida = '$fSalida' 
-, motivoVisita = '$Motivo' , lugarProcedencia = '$Lugar' WHERE idRegistro = '$idRegistro' ";
+$actualizar = "UPDATE hotel set nombre = '$nombre' , categoria = '$categoria' 
+, domicilio = '$domicilio' , ocupacion = '$ocupacion', ubicacion = '$ubicacion', NoHabitaciones = '$noHabitaciones' WHERE idHotel = '$idHotel' ";
 $update = mysqli_query($conexion, $actualizar);
 
 
 
 if ($update) {
-  header("location: Gerente.php?hotelid=$id");
+  header("location: administrador.php?hotelid=$id");
 }
 
 ?>
