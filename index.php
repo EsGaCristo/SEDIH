@@ -1,6 +1,6 @@
 <?php 
         include("src/database/conexion_bd.php");
-        include("controlador.php");
+        include("crud/controlador.php");
 ?>
 
 
@@ -14,7 +14,7 @@
     <section> 
         <div class="form-box">
             <div class="form-value">
-                <form method="post" action="controlador.php">
+                <form method="post" action="crud/controlador.php">
                     <h2>SEDIH</h2>
                     <h2>Iniciar sesion</h2>
                     <div class="inputbox">

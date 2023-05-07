@@ -10,13 +10,14 @@
             $sql=$conexion->query("select * from usuarios where correo = '$usuario' and  userPass= '$clave'");
             if ($datos=$sql-> fetch_object()) {
                 if($datos ->tipo ==1){
-                    header("location:Administrador.php");
+                    $hotelid= $datos -> idHotel;
+                    header("location: ../Administrador.php?hotelid=$hotelid");
                 }else if($datos ->tipo ==2){
                     $hotelid= $datos -> idHotel;
-                    header("location: Capturista.php?hotelid=$hotelid");
+                    header("location: ../Capturista.php?hotelid=$hotelid");
                 }else if($datos ->tipo ==3){
                     $hotelid= $datos -> idHotel;
-                    header("location:Gerente.php?hotelid=$hotelid");;
+                    header("location: ../Gerente.php?hotelid=$hotelid");;
                 }
             } else {
                 echo '
