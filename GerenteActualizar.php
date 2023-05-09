@@ -61,7 +61,7 @@ $resultado = $mysqli->query("SELECT * FROM habitacion where idHotel = '$hotelid'
 		</div>
 	</form>
 
-	<form class="row g-3" method='post' action="actualizarRegistrosGerente.php?id=<?php echo $hotelid ?>"
+	<form class="row g-3" method='post' action="validarOpcionGerente.php?id=<?php echo $hotelid ?>"
 		style="margin-left: 400px; margin-right: 400px; margin-top: 20px; background: transparent; border-radius: 20px;  backdrop-filter: blur(35px);">
 		<div
 			style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: CENTER; color: WHITE; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 25px;">
@@ -92,7 +92,7 @@ $resultado = $mysqli->query("SELECT * FROM habitacion where idHotel = '$hotelid'
 			</tr>
 		</table>
 		<div class="col-3" style="float: center; text-align: center; margin-top: 15px; margin-bottom: 200 px;">
-			<button type="submit" class="btn btn-primary" name="btnActualizar"
+			<button type="submit" class="btn btn-primary" name="accion" value = "actualizarRegistro"
 				style="margin-left: 800;">Actualizar</button>
 		</div>
 	</form>
@@ -100,6 +100,15 @@ $resultado = $mysqli->query("SELECT * FROM habitacion where idHotel = '$hotelid'
 	<form class="row g-3"
 		style="margin-left: 500px; margin-right: 500px; margin-top: 20px; background: transparent; border-radius: 20px;  backdrop-filter: blur(30px);"
 		method="POST"  action="Gerente.php?hotelid=<?php echo $hotelid ?>">
+		<!-- mostrar el botón en el formulario -->
+		<div class="button" style="text-align: center; margin-top: 20px; margin-bottom: 10px;">
+			<button type="submit" class="btn btn-primary" name="btnSalirGerente">Volver</button>
+		</div>
+	</form>
+
+		<form class="row g-3"
+		style="margin-left: 500px; margin-right: 500px; margin-top: 20px; background: transparent; border-radius: 20px;  backdrop-filter: blur(30px);"
+		method="POST" action="index.php">
 		<!-- mostrar el botón en el formulario -->
 		<div class="button" style="text-align: center; margin-top: 20px; margin-bottom: 10px;">
 			<button type="submit" class="btn btn-primary" name="btnSalirGerente">Salir</button>

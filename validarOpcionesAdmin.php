@@ -56,7 +56,7 @@ if (isset($_POST['accion2'])) {
  //Código para actualizar usuarios en administrador 
     if ($_POST['accion2'] == 'actualizar') {
         $actualizar = "UPDATE  usuarios SET tipo = '$tipo', correo='$correo', userPass='$contraseña', idhotel=$idHotel
-         WHERE idUsuario = $idUsuario";
+        WHERE idUsuario = $idUsuario";
 
         $resultado = mysqli_query($conexion, $actualizar);
         if ($resultado) {
