@@ -19,143 +19,138 @@ $resultado = $mysqli->query("SELECT * FROM hotel ");
 
 </head>
 
-<body style="background: url('./src/assets/Fondo4.jpg')no-repeat;">
+<body style="background: url('./src/assets/Fondo7.jpg') no-repeat; background-position: center; background-size: cover;">
+
 <!-- BIENVENIDO A SEDIH (ADMINISTRADOR) -->
 <div style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: center; color: white; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 35px;"> BIENVENIDO A SEDIH (ADMINISTRADOR)</div>
-
-<div class="form-wrapper">
-	<form class="row g-2" style="margin-left: 50px; margin-right: 0px; margin-top: 20px; background: transparent; border-radius: 20px;  backdrop-filter: blur(35px);"
-	action="validarOpcionesAdmin.php?id=<?php echo $hotelid ?>" method="post">
+<div style="display: flex;">
+<!-- CODIGO DE AGREGAR HOTEL-->
+<div class="col-6 mt-3;" style=" margin-left: auto; margin-right: auto; margin-top: 8px; margin-bottom: 8px">
+	<form class="row g-3; "
+			style="background: transparent; border-radius: 20px;  backdrop-filter: blur(35px);"
+		action="validarOpcionesAdmin.php?id=<?php echo $hotelid ?>" method="post">
 	<!-- formulario Izquierdo AGREGAR HOTEL-->		
+			<div class="col-md-13">
+				<div
+					style="background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: CENTER; color: WHITE; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 25px; margin-top: 10px; " >
+					AGREGAR HOTEL
+				</div>
+			</div>
+
+			<div class="col-md-13">
+				<label for="input" class="form-label">NOMBRE</label>
+				<input type="text" class="form-control" name="Nombre">
+				<label for="input" class="form-label">CATEGORIA</label>
+				<input type="text" class="form-control" name="Categoria">
+				<label for="input" class="form-label">DOMICILIO</label>
+				<input type="text" class="form-control" name="Domicilio">
+				<label for="input" class="form-label">OCUPACION</label>
+				<input type="text" class="form-control" name="Ocupacion">
+				<label for="input" class="form-label">UBICACION</label>
+				<input type="text" class="form-control" name="Ubicacion">
+				<label for="input" class="form-label">NUMERO DE HABITACIONES</label>
+				<input type="number" class="form-control" name="NoHabitaciones">	
+					<div class="d-flex justify-content-end" style="margin-top:20px">
+						<button type="submit" class="btn btn-primary btn-sm float-end col-md-4" value="agregar" name="accion">
+							Agregar
+						</button>
+						</div>		
+					<label for="input" class="form-label" style="margin-left: 10px;" >ID Hotel</label>
+				<input type="text" class="form-control" name="idH">
+					<div class="d-flex justify-content-end" style="margin-top:20px">
+						<button type="submit" class="btn btn-primary btn-sm float-end col-md-4" value = "actualizar" name="accion" style="margin-left: 10px; margin-right: 8px">
+						Aplicar Cambios
+						</button>
+					</div>
+			</div>
+	</form>
+</div>
+<!-- CODIGO DE AGREGAR USUARIOS-->
+<div class="col-4 mt-3;" style=" margin-left: auto; margin-right: auto; margin-top 8px; margin-bottom: 8px">
+	<form class="row g-3" style="margin-left: 50px; margin-right: 0px; margin-top: 20px; background: transparent; border-radius: 20px;  backdrop-filter: blur(35px);"
+	action="validarOpcionesAdmin.php?id=<?php echo $hotelid ?>" method="post">
+
 		<div class="col-md-13">
 			<div
-				style="background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: CENTER; color: WHITE; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 25px; margin-top: 10px; " >
-				AGREGAR HOTEL
+			style="background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: CENTER; color: WHITE; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 25px; margin-top: 10px; " >
+					AGREGAR USUARIO
 			</div>
 		</div>
 
-		<div style="display: flex; align-items: center;">
-			<label for="input" class="form-label">NOMBRE</label>
-			<input type="text" class="form-control" name="Nombre" style="margin-left: 105px; margin-right: 20px ; margin-top: 5px;">
-		</div>
-		<div style="display: flex; align-items: center;">
-			<label for="input" class="form-label">CATEGORIA</label>
-			<input type="text" class="form-control" name="Categoria" style="margin-left: 80px; margin-right: 20px  ; margin-top: 5px; ">
-	    </div>
-		<div style="display: flex; align-items: center;">
-			<label for="input" class="form-label">DOMICILIO</label>
-			<input type="text" class="form-control" name="Domicilio" style="margin-left: 90px;margin-right: 20px  ; margin-top: 5px;">
-		</div>
-		<div style="display: flex; align-items: center;">
-			<label for="input" class="form-label">OCUPACION</label>
-			<input type="text" class="form-control" name="Ocupacion" style="margin-left: 77px; margin-right: 20px  ; margin-top: 5px;">
-		</div>
-		<div style="display: flex; align-items: center;">
-			<label for="input" class="form-label">UBICACION</label>
-			<input type="text" class="form-control" name="Ubicacion" style="margin-left: 83px; margin-right: 20px  ; margin-top: 5px;">
-		</div>
-		<div style="display: flex; align-items: center;">
-			<label for="input" class="form-label">NUMERO DE HABITACIONES</label>
-			<input type="number" class="form-control" name="NoHabitaciones" style="margin-left: 10px; margin-right: 20px  ;margin-top: 5px;">
-		</div>
-
-		<div class="col-20" style=" display: flex; text-align: center; margin-top: 15px; margin-bottom: 0 px;" >
-			
-			<label for="input" class="form-label" style="margin-left: 10px;" >ID Hotel</label>
-			<input type="text" class="form-control" name="idH" style="margin-left: 120px; margin-right: 0px  ;margin-top: 5px;">
-
-			<button type="submit" class="btn btn-primary" value = "agregar" name="accion"style="margin-left: 8px; margin-right: 10px">
-			Agregar
-			</button>
-
-			<button type="submit" class="btn btn-primary" value = "actualizar" name="accion" style="margin-left: 10px; margin-right: 8px">
-			Aplicar Cambios
-			</button>
-
-		</div>
-
-   </form>
- 
-
-</div>
-<div class="form-wrapper" >
-  <form class="row g-2" style="margin-left: 50px; margin-right: 0px; margin-top: 20px; background: transparent; border-radius: 20px;  backdrop-filter: blur(35px);"
-  action="validarOpcionesAdmin.php?id=<?php echo $hotelid ?>" method="post">
-
-	<div class="col-md-13">
-		<div
-			style="background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: CENTER; color: WHITE; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 25px; margin-top: 10px;">
-			AGREGAR USUARIO
-		</div>
-	</div>
-
-	<div style="display: flex; align-items: center;">
+		<div class="col-md-12">
 			<label for="input" class="form-label">Tipo</label>
-			<select class="form-select" aria-label="Default select example" name="tipo" required style="margin-left: 120px; margin-right: 20px ; margin-top: 5px;">
+			<select class="form-select" aria-label="Default select example" name="tipo" required >
 				<option id="0" value="0" selected="selected">Seleccionar</option>
 				<option value=3>GERENTE</option>
 				<option value=2>CAPTURISTA</option>
 			</select>
-		</div>
-		<div style="display: flex; align-items: center;">
 			<label for="input" class="form-label">Correo</label>
-			<input type="text" class="form-control" name="correo" style="margin-left: 100px; margin-right: 20px  ; margin-top: 5px; ">
-	    </div>
-		<div style="display: flex; align-items: center;">
-			<label for="input" class="form-label">ID Hotel</label>
-			<select class="form-select" aria-label="Default select example"  name="idHo" style="margin-left: 100px; margin-right: 20px  ; margin-top: 5px; "required>
+			<input type="text" class="form-control" name="correo" >
+	    	<label for="input" class="form-label">ID Hotel</label>
+			<select class="form-select" aria-label="Default select example"  name="idHo"required>
 				<option value="0">Seleccionar</option>
 
 				<?php while ($row = $resultado->fetch_assoc()) { ?>
 					<option value="<?php echo $row['idHotel']; ?>"><?php echo $row['nombre']; ?></option>
 				<?php } ?>
 			</select>
-		</div>
-		<div style="display: flex; align-items: center;">
 			<label for="input" class="form-label">Contraseña</label>
-			<input type="text" class="form-control" name="contra" style="margin-left: 60px; margin-right: 20px  ; margin-top: 5px;">
-		</div>
-
-
-		<div class="col-20" style=" display: flex; text-align: center; margin-top: 15px; margin-bottom: 0 px;" >
+			<input type="text" class="form-control" name="contra">	
+			<div class="d-flex justify-content-end" style="margin-top:20px">		
+				<button type="submit" class="btn btn-primary btn-sm float-end col-md-5" value="agregar" name="accion2"style="margin-left: 8px; margin-right: 10px">
+				Agregar
+				</button>
+			</div>
+			<label for="input" class="form-label">ID Usuario</label>
+			<input type="text" class="form-control" name="idUs" >
 			
-			<label for="input" class="form-label" style="margin-left: 10px;" >ID Usuario</label>
-			<input type="text" class="form-control" name="idUs" style="margin-left: 80px; margin-right: 0px  ;margin-top: 10px;">
-
-			<button type="submit" class="btn btn-primary" value="agregar" name="accion2"style="margin-left: 8px; margin-right: 10px">
-			Agregar
-			</button>
-
-			<button type="submit" class="btn btn-primary" value= "actualizar" name="accion2" style="margin-left: 10px; margin-right: 8px">
-			Aplicar Cambios
-			</button>
-
+			<div class="d-flex justify-content-end" style="margin-top:20px">					
+				<button type="submit" class="btn btn-primary btn-sm float-end col-md-5" value= "actualizar" name="accion2" style="margin-left: 10px; margin-right: 8px">
+				Aplicar Cambios
+				</button>
+			</div>
+			
 		</div>
 
 	<!-- formulario Derecho -->
   </form>
 </div>
 
+</div>
+
+
 <style>
-  .form-wrapper {
-    width: 49%;
-    display: inline-block; /* o display: flex; */
-  }
+	.form-wrapper {
+		width: 49%;
+		display: inline-block; /* o display: flex; */
+	}
 
+	#tablaContainer {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+	}
+
+	#tablaContainer table {
+		margin: 0 auto;
+	}
 </style>
-
-<!------------------------------------------------HOTELES REGISTRADOS------------------------------------------------------------------------------------->
-	<form class="row g-2"
+<div class="container mt-5">
+	<!------------------------------------------------HOTELES Y USUARIOS------------------------------------------------------------------------------------->
+	<form class="row g-3"
 		style="margin-left: 100px; margin-right: 100px; margin-top: 20px; background: transparent; border-radius: 20px;  backdrop-filter: blur(35px);"
 		action="validarOpcionesAdmin.php?id=<?php echo $hotelid ?>" method="post">
 		<div
-			style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: CENTER; color: WHITE; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 25px;">
+			style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: CENTER; color: WHITE; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 25px;"
+			id = 'etiquetaHotelUsuario'>
 			CONTROL DE HOTELES Y USUARIOS</div>
 
 		<div style="background-color: transparent ;" >
+		<div class="table-responsive" style="max-width: 100%;">
 <!--------------------------------TABLA DE HOTELES--------------------------------------------------------------------------------------------------------->
-			<table style="color: white; width: 100%;" id="TablaHoteles" >
-				<tr>
+			<table style="color: white; width: 100%; margin-right: auto; margin-top: auto;" id="TablaHoteles" class="table" >
+				<tr style='text-align: center;'>
 					<td>ID</td>
 					<td>NOMBRE</td>
 					<td>CATEGORIA</td>
@@ -163,6 +158,7 @@ $resultado = $mysqli->query("SELECT * FROM hotel ");
 					<td>OCUPACION</td>
 					<td>UBICACION</td>
 					<td>NUMERO DE HABITACIONES</td>
+					<td>SELECCIÓN</td>
 	
 				</tr>
 
@@ -172,7 +168,7 @@ $resultado = $mysqli->query("SELECT * FROM hotel ");
 				$result = mysqli_query($conexion, $query);
 
 				while ($row = mysqli_fetch_assoc($result)) {
-					echo "<tr>";
+					echo "<tr style='text-align: center;'>";
 					echo "<td>" . $row["idHotel"] . "</td>";
 					echo "<td>" . $row["nombre"] . "</td>";
 					echo "<td>" . $row["categoria"] . "</td>";
@@ -186,75 +182,77 @@ $resultado = $mysqli->query("SELECT * FROM hotel ");
 
 				?>
 			</table>
+			</div>
 		</div>
 
-
+		
 		<!--------------------------------TABLA DE USUARIOS--------------------------------------------------------------------------------------------------------->
-		<div style="background-color: transparent;">
-		<table style="color: white; width: 100%; display:none;" id="TablaUsuarios"> 
-				<tr>
-					<td>ID</td>
-					<td>TIPO</td>
-					<td>HOTEL</td>
-					<td>Correo</td>
-					<td>CONTRASEÑA</td>
-				</tr>
+		<div style="background-color: transparent;" >
+		<div class="table-responsive" id="TablaUsuarios" style="max-width: 100%; display: none; justify-content: center;">
+  <table style="color: white; width: 100%; text-align: center;"  class="table">
+    <tr style='text-align: center;'>	<td>ID</td>
+						<td>TIPO</td>
+						<td>HOTEL</td>
+						<td>Correo</td>
+						<td>CONTRASEÑA</td>
+						<td>SELECCIÓN</td>
+				
+					</tr>
 
-				<?php
-				include("src/database/conexion_bd.php");
-				$query = "SELECT * FROM usuarios";
-				$result = mysqli_query($conexion, $query);
+					<?php
+					include("src/database/conexion_bd.php");
+					$query = "SELECT * FROM usuarios";
+					$result = mysqli_query($conexion, $query);
 
-				while ($row = mysqli_fetch_assoc($result)) {
-					echo "<tr>";
-					echo "<td>" . $row["idUsuario"] . "</td>";
-					echo "<td>" . $row["tipo"] . "</td>";
-					echo "<td>" . $row["idHotel"] . "</td>";
-					echo "<td>" . $row["correo"] . "</td>";
-					echo "<td>" . $row["userPass"] . "</td>";
-					echo "<td><input type='checkbox' name='eliminar2[]' value='" . $row["idUsuario"] . "'></td>"; // Agregar una columna con una casilla de verificación
-					echo "</tr>";
-				}
+					while ($row = mysqli_fetch_assoc($result)) {
+						echo "<tr style='text-align: center;'>";
+						echo "<td>" . $row["idUsuario"] . "</td>";
+						echo "<td>" . $row["tipo"] . "</td>";
+						echo "<td>" . $row["idHotel"] . "</td>";
+						echo "<td>" . $row["correo"] . "</td>";
+						echo "<td>" . $row["userPass"] . "</td>";
+						echo "<td><input type='checkbox' name='eliminar2[]' value='" . $row["idUsuario"] . "'></td>"; // Agregar una columna con una casilla de verificación
+						echo "</tr>";
+					}
 
-				?>
-			</table>
+					?>
+				</table>
+			</div>
 		</div>	
-		
-		<div class="col-5" style="float: center; text-align: center; margin-top: 15px; margin-bottom: 200 px; margin-left: 125px;">
-			<button  type="submit" class="btn btn-primary" value= "eliminar" name="accion3" style=" margin-right: 10px;margin-left: 850; margin-top: 15px">Eliminar hotel</button>
-		</div>	
-		
-		<div class="col-5" style="float: center; text-align: center; margin-top: 15px; margin-bottom: 20 px; mar">	
-			<button type="submit" class="btn btn-primary" value= "borrarusuarios" name="accion3" style="margin-left: 5px; margin-top: 15px;">Borrar usuarios</button>
-		</div>
-		
-	</form>
 			
-	<div class="col-20" style=" display: flex; text-align: center; margin-top: 15px; margin-bottom: 0 px;" >
+		<div class="row">
+			<div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3 mb-3">
+				<button type="submit" class="btn btn-primary"  value="eliminar" name="accion3">Eliminar hotel</button>
+			</div>
+			
+			<div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3 mb-3">
+				<button type="submit" class="btn btn-primary"  value="borrarusuarios" name="accion3">Borrar usuarios</button>
+			</div>
+
+		</div>
+	</form>
+</div>	
+
+	<div class="col-8" style=" display: flex; text-align: center; margin-left: 195px; margin-top: 15px; margin-bottom: 0 px;" >
 		<button id="boton" type="button" class="btn btn-primary" style="margin-right: 10px; display: inline-block; margin-left: 70px;">Cambiar Tabla</button>
 		<button type="button" class="btn btn-primary" onclick="window.location.href='index.php';" style="display: inline-block; margin-left: 15px; margin-right: 30px;">Salir</button>
 	</div>
-
-
-
-
-
-
-
 
 	<script>
 		var tabla1 = document.getElementById("TablaHoteles");
 		var tabla2 = document.getElementById("TablaUsuarios");
 		var boton = document.getElementById("boton");
-
+		var etiqueta =document.getElementById("etiquetaHotelUsuario");
 
 		boton.onclick = function() {
 			if (tabla1.style.display !== "none") {
 			tabla1.style.display = "none";
-			tabla2.style.display = "block";
+			tabla2.style.display = "flex";
+			etiqueta.innerHTML = "Usuarios";
 			} else {
 			tabla1.style.display = "block";
 			tabla2.style.display = "none";
+			etiqueta.innerHTML = "Hoteles";
 			}
 		};
 	</script>

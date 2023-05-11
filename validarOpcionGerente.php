@@ -68,7 +68,7 @@ if (isset($_POST['accion2'])) {
       $resultado = mysqli_query($conexion, $insertar);
 
       if ($resultado) {
-        header("location: Gerente.php?hotelid=$id");
+        header("location: GerenteHabitacion.php?hotelid=$id");
       }
     } catch (mysqli_sql_exception $e) {
       // si se produce una excepción, significa que hubo un error al insertar el registro
@@ -87,6 +87,16 @@ setTimeout(function() {
   } elseif ($_POST['accion2'] == 'RegTipoHab') {
     $id = $_GET['id'];
     header("location: GerenteTipoHabitacion.php?hotelid=$id");
+  }
+
+  if ($_POST['accion2'] == 'RegHabitacion') {
+    $id = $_GET['id'];
+    header("location: GerenteHabitacion.php?hotelid=$id");
+  }
+
+  if ($_POST['accion2'] == 'Salir') {
+    $id = $_GET['id'];
+    header("location: index.php");
   }
 }
 
@@ -135,6 +145,24 @@ if (isset($_POST['accion3'])) {
         if ($resultado) {
           //echo '<script> alert ("Se ha borrado el dato);';
           header("location: GerenteTipoHabitacion.php?hotelid=$id");
+        }
+      }
+    }
+  }
+
+  if ($_POST['accion3'] == 'borrarHabitacion') {
+    if (isset($_POST['accion3'])) {
+      $id = $_GET['id'];
+      // los valores seleccionados se encuentran en el arreglo $_POST['eliminar']
+      $valores_seleccionados = $_POST['eliminar'];
+      // puedes recorrer el arreglo y trabajar con cada valor individualmente
+      foreach ($valores_seleccionados as $valor) {
+        $borrar = "DELETE FROM habitacion WHERE numeroHabitacion = ".$valor." AND idHotel = " . $id;
+        $resultado = mysqli_query($conexion, $borrar);
+
+        if ($resultado) {
+          //echo '<script> alert ("Se ha borrado el dato);';
+          header("location: GerenteHabitacion.php?hotelid=$id");
         }
       }
     }
