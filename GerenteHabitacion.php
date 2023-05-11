@@ -43,7 +43,7 @@ function updateValue2() {
 
 </head>
 
-<body style="background: url('./src/assets/Fondo2.jpg') no-repeat; background-position: center; background-size: cover;">
+<body style="background: url('./src/assets/Fondo8.jpg') no-repeat; background-position: center; background-size: cover;">
 
 	<div style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: center; color: white; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 35px;">
 		BIENVENIDO A SEDIH
@@ -106,7 +106,7 @@ function updateValue2() {
 	</div>
 	
     <form class="row g-3 mx-auto"
-	style="max-width: 800px; margin-top: 20px; background: transparent; border-radius: 20px; backdrop-filter: blur(35px);"
+	style="max-width: 800px; margin-top: 20px; background: transparent; border-radius: 20px; backdrop-filter: blur(65px);"
 	action="validarOpcionGerente.php?id=<?php echo $hotelid ?>" method="post">
 	<div
 		style="background: transparent; border-radius: 20px; backdrop-filter: blur(10px); text-align: CENTER; color: WHITE; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 25px;"
