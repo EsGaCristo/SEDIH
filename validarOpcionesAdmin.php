@@ -8,12 +8,10 @@ if (isset($_POST['accion'])) {
         $nombre = $_POST['Nombre'];
         $categoria = $_POST['Categoria'];
         $domicilio = $_POST['Domicilio'];
-        $ocupacion = $_POST['Ocupacion'];
         $ubicacion = $_POST['Ubicacion'];
-        $noHabitaciones = $_POST['NoHabitaciones']; 
     if ($_POST['accion'] == 'agregar') {
         $insertar = "INSERT INTO hotel (idHotel, nombre, categoria, domicilio, ocupacion, ubicacion, noHabitaciones) 
-        VALUES ('','$nombre','$categoria', '$domicilio','$ocupacion','$ubicacion',$noHabitaciones)";
+        VALUES ('','$nombre','$categoria', '$domicilio','','$ubicacion','')";
     
         $resultado = mysqli_query($conexion, $insertar);
         if ($resultado) {
@@ -25,7 +23,7 @@ if (isset($_POST['accion'])) {
     //Código para actualizar hotel en administrador   
     if ($_POST['accion'] == 'actualizar') {
         $actualizar = "UPDATE  hotel SET  nombre = '$nombre', categoria = '$categoria', domicilio = '$domicilio', 
-        ocupacion = '$ocupacion', ubicacion = '$ubicacion' , noHabitaciones = $noHabitaciones WHERE idHotel = $idHotel;";
+        ubicacion = '$ubicacion' WHERE idHotel = $idHotel;";
     
         $resultado = mysqli_query($conexion, $actualizar);
         if ($resultado) {

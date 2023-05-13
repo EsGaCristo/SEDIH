@@ -25,40 +25,42 @@ $resultado = $mysqli->query("SELECT * FROM hotel ");
 <div style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: center; color: white; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 35px;"> BIENVENIDO A SEDIH (ADMINISTRADOR)</div>
 <div style="display: flex;">
 <!-- CODIGO DE AGREGAR HOTEL-->
-<div class="col-6 mt-3;" style=" margin-left: auto; margin-right: auto; margin-top: 8px; margin-bottom: 8px">
-	<form class="row g-3; "
-			style="background: transparent; border-radius: 20px;  backdrop-filter: blur(35px);"
-		action="validarOpcionesAdmin.php?id=<?php echo $hotelid ?>" method="post">
+<div class="col-4 mt-3;" style=" margin-left: auto; margin-right: auto; margin-top: 8px; margin-bottom: 8px">
+<form class="row g-3" style="margin-left: 50px; margin-right: 0px; margin-top: 20px; background: transparent; border-radius: 20px;  backdrop-filter: blur(35px);"
+	action="validarOpcionesAdmin.php?id=<?php echo $hotelid ?>" method="post" onsubmit="return validateCategoria()">
 	<!-- formulario Izquierdo AGREGAR HOTEL-->		
 			<div class="col-md-13">
 				<div
-					style="background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: CENTER; color: WHITE; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 25px; margin-top: 10px; " >
+					style="background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: CENTER; color: WHITE; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 25px;" >
 					AGREGAR HOTEL
 				</div>
 			</div>
 
-			<div class="col-md-13">
+			<div class="col-md-12">
 				<label for="input" class="form-label">NOMBRE</label>
-				<input type="text" class="form-control" name="Nombre">
+				<input type="text" class="form-control" name="Nombre" required>
 				<label for="input" class="form-label">CATEGORIA</label>
-				<input type="text" class="form-control" name="Categoria">
+				<select class="form-select" aria-label="Default select example"  name="Categoria"required>
+					<option value="0">Seleccionar</option>
+					<option value="1">1 ESTRELLA</option>
+					<option value="2">2 ESTRELLAS</option>
+					<option value="3">3 ESTRELLAS</option>
+					<option value="4">4 ESTRELLAS</option>
+					<option value="5">5 ESTRELLAS</option>
+				</select>
 				<label for="input" class="form-label">DOMICILIO</label>
-				<input type="text" class="form-control" name="Domicilio">
-				<label for="input" class="form-label">OCUPACION</label>
-				<input type="text" class="form-control" name="Ocupacion">
+				<input type="text" class="form-control" name="Domicilio"required>
 				<label for="input" class="form-label">UBICACION</label>
-				<input type="text" class="form-control" name="Ubicacion">
-				<label for="input" class="form-label">NUMERO DE HABITACIONES</label>
-				<input type="number" class="form-control" name="NoHabitaciones">	
+				<input type="text" class="form-control" name="Ubicacion"required>
 					<div class="d-flex justify-content-end" style="margin-top:20px">
-						<button type="submit" class="btn btn-primary btn-sm float-end col-md-4" value="agregar" name="accion">
+						<button type="submit" class="btn btn-primary btn-sm float-end col-md-5" value="agregar" name="accion">
 							Agregar
 						</button>
 						</div>		
 					<label for="input" class="form-label" style="margin-left: 10px;" >ID Hotel</label>
 				<input type="text" class="form-control" name="idH">
-					<div class="d-flex justify-content-end" style="margin-top:20px">
-						<button type="submit" class="btn btn-primary btn-sm float-end col-md-4" value = "actualizar" name="accion" style="margin-left: 10px; margin-right: 8px">
+					<div class="d-flex justify-content-end" style="margin-top:20px; margin-bottom:10px;">
+						<button type="submit" class="btn btn-primary btn-sm float-end col-md-5" value = "actualizar" name="accion" style="margin-left: 10px; margin-right: 8px">
 						Aplicar Cambios
 						</button>
 					</div>
@@ -68,7 +70,7 @@ $resultado = $mysqli->query("SELECT * FROM hotel ");
 <!-- CODIGO DE AGREGAR USUARIOS-->
 <div class="col-4 mt-3;" style=" margin-left: auto; margin-right: auto; margin-top 8px; margin-bottom: 8px">
 	<form class="row g-3" style="margin-left: 50px; margin-right: 0px; margin-top: 20px; background: transparent; border-radius: 20px;  backdrop-filter: blur(35px);"
-	action="validarOpcionesAdmin.php?id=<?php echo $hotelid ?>" method="post">
+	action="validarOpcionesAdmin.php?id=<?php echo $hotelid ?>" method="post" onsubmit="return validateTipoidHotel()">
 
 		<div class="col-md-13">
 			<div
@@ -80,12 +82,12 @@ $resultado = $mysqli->query("SELECT * FROM hotel ");
 		<div class="col-md-12">
 			<label for="input" class="form-label">Tipo</label>
 			<select class="form-select" aria-label="Default select example" name="tipo" required >
-				<option id="0" value="0" selected="selected">Seleccionar</option>
+				<option id="0" value="0" selected>Seleccionar</option>
 				<option value=3>GERENTE</option>
 				<option value=2>CAPTURISTA</option>
 			</select>
 			<label for="input" class="form-label">Correo</label>
-			<input type="text" class="form-control" name="correo" >
+			<input type="text" class="form-control" name="correo" required>
 	    	<label for="input" class="form-label">ID Hotel</label>
 			<select class="form-select" aria-label="Default select example"  name="idHo"required>
 				<option value="0">Seleccionar</option>
@@ -95,7 +97,7 @@ $resultado = $mysqli->query("SELECT * FROM hotel ");
 				<?php } ?>
 			</select>
 			<label for="input" class="form-label">Contraseña</label>
-			<input type="text" class="form-control" name="contra">	
+			<input type="text" class="form-control" name="contra" required>	
 			<div class="d-flex justify-content-end" style="margin-top:20px">		
 				<button type="submit" class="btn btn-primary btn-sm float-end col-md-5" value="agregar" name="accion2"style="margin-left: 8px; margin-right: 10px">
 				Agregar
@@ -104,7 +106,7 @@ $resultado = $mysqli->query("SELECT * FROM hotel ");
 			<label for="input" class="form-label">ID Usuario</label>
 			<input type="text" class="form-control" name="idUs" >
 			
-			<div class="d-flex justify-content-end" style="margin-top:20px">					
+			<div class="d-flex justify-content-end" style="margin-top:20px; margin-bottom:10px">					
 				<button type="submit" class="btn btn-primary btn-sm float-end col-md-5" value= "actualizar" name="accion2" style="margin-left: 10px; margin-right: 8px">
 				Aplicar Cambios
 				</button>
@@ -158,7 +160,7 @@ $resultado = $mysqli->query("SELECT * FROM hotel ");
 					<td>OCUPACION</td>
 					<td>UBICACION</td>
 					<td>NUMERO DE HABITACIONES</td>
-					<td>SELECCIÓN</td>
+					<td title='SELECCIONE LOS REGISTROS QUE DESEA ELIMINAR'>SELECCIÓN</td>
 	
 				</tr>
 
@@ -176,7 +178,7 @@ $resultado = $mysqli->query("SELECT * FROM hotel ");
 					echo "<td>" . $row["ocupacion"] . "</td>";
 					echo "<td>" . $row["ubicacion"] . "</td>";
 					echo "<td>" . $row["noHabitaciones"] . "</td>";
-					echo "<td><input type='checkbox' name='eliminar[]' value='" . $row["idHotel"] . "'></td>"; // Agregar una columna con una casilla de verificación
+					echo "<td title='SELECCIONE LOS REGISTROS QUE DESEA ELIMINAR'><input type='checkbox' name='eliminar[]' value='" . $row["idHotel"] . "'></td>"; // Agregar una columna con una casilla de verificación
 					echo "</tr>";
 				}
 
@@ -195,7 +197,7 @@ $resultado = $mysqli->query("SELECT * FROM hotel ");
 						<td>HOTEL</td>
 						<td>Correo</td>
 						<td>CONTRASEÑA</td>
-						<td>SELECCIÓN</td>
+						<td title='SELECCIONE LOS REGISTROS QUE DESEA ELIMINAR'>SELECCIÓN</td>
 				
 					</tr>
 
@@ -211,7 +213,7 @@ $resultado = $mysqli->query("SELECT * FROM hotel ");
 						echo "<td>" . $row["idHotel"] . "</td>";
 						echo "<td>" . $row["correo"] . "</td>";
 						echo "<td>" . $row["userPass"] . "</td>";
-						echo "<td><input type='checkbox' name='eliminar2[]' value='" . $row["idUsuario"] . "'></td>"; // Agregar una columna con una casilla de verificación
+						echo "<td title='SELECCIONE LOS REGISTROS QUE DESEA ELIMINAR'><input type='checkbox' name='eliminar2[]' value='" . $row["idUsuario"] . "'></td>"; // Agregar una columna con una casilla de verificación
 						echo "</tr>";
 					}
 
@@ -222,11 +224,11 @@ $resultado = $mysqli->query("SELECT * FROM hotel ");
 			
 		<div class="row">
 			<div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3 mb-3">
-				<button type="submit" class="btn btn-primary"  value="eliminar" name="accion3">Eliminar hotel</button>
+				<button type="submit" class="btn btn-primary"  value="eliminar" id="eliminarHotel"name="accion3">Eliminar hotel</button>
 			</div>
 			
 			<div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3 mb-3">
-				<button type="submit" class="btn btn-primary"  value="borrarusuarios" name="accion3">Borrar usuarios</button>
+				<button type="submit" class="btn btn-primary"  value="borrarusuarios" id="borrarUsuarios" name="accion3" disabled>Borrar usuarios</button>
 			</div>
 
 		</div>
@@ -243,18 +245,50 @@ $resultado = $mysqli->query("SELECT * FROM hotel ");
 		var tabla2 = document.getElementById("TablaUsuarios");
 		var boton = document.getElementById("boton");
 		var etiqueta =document.getElementById("etiquetaHotelUsuario");
-
+		var boton1 = document.getElementById("eliminarHotel");
+		var boton2 = document.getElementById("borrarUsuarios");
+		
 		boton.onclick = function() {
 			if (tabla1.style.display !== "none") {
 			tabla1.style.display = "none";
 			tabla2.style.display = "flex";
 			etiqueta.innerHTML = "Usuarios";
+			boton1.disabled = true;
+			boton2.disabled = false;
 			} else {
 			tabla1.style.display = "block";
 			tabla2.style.display = "none";
 			etiqueta.innerHTML = "Hoteles";
+			boton2.disabled = true;
+			boton1.disabled = false;
 			}
 		};
+			function validateCategoria() {
+			var cat = document.forms[0].Categoria.value;
+			if (cat == 0) {
+				alert("Por favor, selecciona una categoria.");
+				return false;
+			}
+			return true;
+			}	
+
+			function validateTipoidHotel() {
+			var tipoU = document.forms[1].tipo.value;
+				if(tipoU==0){
+					alert("Por favor, selecciona un tipo de usuario.");
+					return false;
+				}
+
+			var idHot =document.forms[1].idHo.value;
+				if(idHot==0){
+					alert("Por favor, selecciona un hotel.");
+					return false;
+				}
+
+
+			return true;
+			}
+				
 	</script>
 
 </body>

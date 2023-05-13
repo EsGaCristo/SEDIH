@@ -38,7 +38,29 @@ function updateValue2() {
 		hotelDiv = hotelDiv.replace("Hotel: ","").replace(" ","-");
 		var input1Value = document.getElementById("input1").value;
 		document.getElementById("input2").value =  hotelDiv + "-"+input1Value ;
+		
+		if(input1Value < 10){
+			document.getElementById("input2").value = hotelDiv + "-0"+input1Value ;
+		}else{
+			document.getElementById("input2").value = hotelDiv + "-"+input1Value ;
 		}
+	
+		}
+
+	function validaEstadoTipo() {
+	var th = document.forms[0].tipoHabitacion.value;
+	var es = document.forms[0].estado.value;
+			if (th == 0) {
+				alert("Por favor, selecciona un tipo de habitación.");
+				return false;
+			}
+
+			if (es == 0) {
+				alert("Por favor, selecciona un estado.");
+				return false;
+			}
+	return true; // Permite el envío del formulario si todas las opciones están seleccionadas
+	}		
 </script>
 
 </head>
@@ -54,7 +76,7 @@ function updateValue2() {
 	<!----------------------------------------------Codigo de formulario-------------------------------------------------------------------------->
 		<form class="row g-3; "
 			style="background: transparent; border-radius: 20px;  backdrop-filter: blur(35px);"
-			action="validarOpcionGerente.php?id=<?php echo $hotelid ?>" method="post">
+			action="validarOpcionGerente.php?id=<?php echo $hotelid ?>" method="post" onsubmit="return validaEstadoTipo()">
 
 			<div  class="col-12 mt-3">
 				<div
@@ -74,9 +96,9 @@ function updateValue2() {
 			<!------------------------------------------------HABITACIONES------------------------------------------------------------------------------------->
 			<div  class="col-12 mt-3" >
 				<label for="input" class="form-label">ID</label>
-				<input type="text" readonly class="form-control" name="idHabitacion" id="input2">
+				<input type="text" readonly class="form-control" name="idHabitacion" id="input2" required>
 				<label for="input" class="form-label">NÚMERO</label>
-				<input type="number" class="form-control" id = "input1" name="numHabitacion" onchange="updateValue()">
+				<input type="number" class="form-control" id = "input1" name="numHabitacion" onchange="updateValue()"required>
 				<div class="col-md-6">
 					<label for="input" class="form-label">TIPO DE HABITACION</label>
 					<select class="form-select" aria-label="Default select example" name="tipoHabitacion" onchange="updateValue2()"
@@ -90,22 +112,32 @@ function updateValue2() {
 						?>
 					</select>
 				</div>
-				<label for="input" class="form-label">Estado</label>
+				<label for="input" class="form-label">ESTADO</label>
 				<select class="form-select" aria-label="Default select example" name="estado" required>
 					<option id="0" value="0" selected="selected">Seleccionar</option>
 					<option value="DISPONIBLE">DISPONIBLE</option>
 					<option value="OCUPADO">OCUPADO</option>
 				</select>
-				<label for="input" class="form-label">Costo</label>
+				<label for="input" class="form-label">COSTO</label>
 				<input type="number" readonly class="form-control" name="CostoHabitacion" id="CostoHabitacion" required>
-				<div class="d-flex justify-content-end" style="margin-top:20px">
+				<div class="d-flex justify-content-end" style="margin-top:5px">
 					<button type="submit" class="btn btn-primary col-auto" name="accion2" value="RegHab">Registrar Habitacion</button>
-				</div>
 			</div>
 		</form>
 	</div>
 	
-    <form class="row g-3 mx-auto"
+	<form action="validarOpcionGerente.php?id=<?php echo $hotelid ?>" method="post">
+		<label for="input" class="form-label">Cantidad de habitaciones en el Hotel</label>
+		<input type="number" class="form-control" name="cantidadHabitaciones" id="cantidadHabitaciones">
+		<div class="d-flex justify-content-end">
+		<button method="post" type="submit" class="btn btn-primary col-auto" name="accion2" style="margin-top:5px"value="SaveCantHab">
+				Guardar
+			</button>
+		</div>					
+	</form>
+
+
+	<form class="row g-3 mx-auto"
 	style="max-width: 800px; margin-top: 20px; background: transparent; border-radius: 20px; backdrop-filter: blur(65px);"
 	action="validarOpcionGerente.php?id=<?php echo $hotelid ?>" method="post">
 	<div
@@ -122,7 +154,9 @@ function updateValue2() {
 					<th>TIPO</th>
 					<th>ESTADO</th>
 					<th>COSTO</th>
-					<th>ACCIONES</th>
+					<th title="SELECCIONE LOS REGISTROS QUE DESEA ELIMINAR">
+					SELECCIÓN
+					</th>
 				</tr>
 				<?php
 					include("src/database/conexion_bd.php");
@@ -135,7 +169,7 @@ function updateValue2() {
 						echo "<td>" . $row["idTipo"] . "</td>";
 						echo "<td>" . $row["estado"] . "</td>";
 						echo "<td>" . $row["costo"] . "</td>";
-						echo "<td><input type='checkbox' name='eliminar[]' value='" . $row["numeroHabitacion"] . "'></td>"; // Agregar una columna con una casilla de verificación
+						echo "<td title='SELECCIONE LOS REGISTROS QUE DESEA ELIMINAR'><input type='checkbox' name='eliminar[]' value='" . $row["numeroHabitacion"] . "'></td>"; // Agregar una columna con una casilla de verificación
 						echo "</tr>";
 					}
 				?>

@@ -60,29 +60,46 @@ if (isset($_POST['accion2'])) {
     $costo = $_POST['CostoHabitacion'];
     //$idHotel = $_POST['$hotelid'];
 
-    try {
-      $insertar =
-        "INSERT INTO habitacion (codigoHabitacion, numeroHabitacion, idTipo, estado, costo, idHotel) 
-    VALUES ('$idH',$num,$Tipo,'$estado', $costo, $id)";
-
-      $resultado = mysqli_query($conexion, $insertar);
-
-      if ($resultado) {
-        header("location: GerenteHabitacion.php?hotelid=$id");
+    $habitacionesDelHotel = "SELECT COUNT(idTipo) FROM habitacion WHERE idHotel = $id";
+    $habitacionesAgregadas = mysqli_query($conexion, $habitacionesDelHotel);
+    $habitacionesAgregadas = mysqli_fetch_array($habitacionesAgregadas);
+    $habitacionesAgregadas = $habitacionesAgregadas[0];
+    
+    $totalHabi = "SELECT noHabitaciones FROM hotel WHERE idHotel = $id";
+    $totalHab = mysqli_query($conexion, $totalHabi);
+    $totalHab = mysqli_fetch_array($totalHab);
+    $totalHab = $totalHab[0];
+    
+    // Comparación de los valores
+    if ($habitacionesAgregadas != $totalHab) {
+        echo "El número de habitaciones agregadas es igual al total de habitaciones.";
+      try {
+        $insertar = "INSERT INTO habitacion (codigoHabitacion, numeroHabitacion, idTipo, estado, costo, idHotel) 
+                    VALUES ('$idH',$num,$Tipo,'$estado', $costo, $id)";
+        $resultado = mysqli_query($conexion, $insertar);
+        if ($resultado) {
+          header("location: GerenteHabitacion.php?hotelid=$id");
+        }
+      } catch (mysqli_sql_exception $e) {
+        // si se produce una excepción, significa que hubo un error al insertar el registro
+        // enviamos un alert al usuario indicando el problema
+        echo "<script>alert('Hubo un error al insertar el registro: " . $e->getMessage() . "');</script>";
       }
-    } catch (mysqli_sql_exception $e) {
-      // si se produce una excepción, significa que hubo un error al insertar el registro
-      // enviamos un alert al usuario indicando el problema
-      echo "<script>alert('Hubo un error al insertar el registro: " . $e->getMessage() . "');</script>";
+
+      echo '<script>
+            alert("No se ha podido registrar la habitacion, verifique que los datos.");
+            setTimeout(function() {
+              window.location.href = "GerenteHabitacion.php?hotelid=' . $id . '";
+            }, 50); // espera 3 segundos antes de redirigir
+          </script>';
+    } else {
+      echo '<script>
+            alert("¡Limite de habitaciones excedido!");
+            setTimeout(function() {
+                window.location.href = "GerenteHabitacion.php?hotelid=' . $id . '";
+            }, 50); // espera 3 segundos antes de redirigir
+            </script>';
     }
-
-    echo '<script>
-alert("No se ha podido registrar la habitacion, verifique que los datos.");
-setTimeout(function() {
-  window.location.href = "Gerente.php?hotelid=' . $id . '";
-}, 50); // espera 3 segundos antes de redirigir
-</script>';
-
 
   } elseif ($_POST['accion2'] == 'RegTipoHab') {
     $id = $_GET['id'];
@@ -98,8 +115,22 @@ setTimeout(function() {
     $id = $_GET['id'];
     header("location: index.php");
   }
-}
 
+  if($_POST['accion2'] == 'SaveCantHab'){
+    $id = $_GET['id'];
+    $cantidad = $_POST['cantidadHabitaciones'];
+    $actualizar = "UPDATE hotel set noHabitaciones = $cantidad WHERE idhotel =$id";
+    $update = mysqli_query($conexion, $actualizar);
+    if($update){
+     echo '<script>
+            alert("Se ha actualizado la cantidad de habitaciones con éxito.");
+            setTimeout(function() {
+                window.location.href = "GerenteHabitacion.php?hotelid=' . $id . '";
+            }, 50); // espera 3 segundos antes de redirigir
+            </script>';
+    }  
+  }
+}
 
 if (isset($_POST['accion3'])) {
   if ($_POST['accion3'] == 'insertarTipoHab') {

@@ -51,15 +51,15 @@ $hotelid = isset($_GET['hotelid']) ? $_GET['hotelid'] : '';
 		
 		</div>
 		<div
-				style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: CENTER; color: cyan; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 25px;">
+				style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: CENTER; color: WHITE; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 25px;">
 				CONTROL - TIPOS DE HABITACION</div>
 		<div class="col-md-13">
 			<label for="input" class="form-label">Nombre</label>
-			<input type="text" class="form-control" name="nombreHabitacion" >
+			<input type="text" class="form-control" name="nombreHabitacion" required>
 			<label for="input" class="form-label">Cantidad de habitaciones</label>
-			<input type="number" class="form-control" id = "input1" name="cantidadHab">
+			<input type="number" class="form-control" id = "input1" name="cantidadHab" required>
 			<label for="input" class="form-label">Costo </label>
-			<input type="number" class="form-control" id = "input1" name="costoHab">
+			<input type="number" class="form-control" id = "input1" name="costoHab" required>
 			<div class="d-flex justify-content-end" style="margin-top:20px">
 				<button type="submit" class="btn btn-primary" value = "insertarTipoHab" name="accion3" style="margin-left: 650px;">Registrar</button>
 			</div>
@@ -83,7 +83,7 @@ $hotelid = isset($_GET['hotelid']) ? $_GET['hotelid'] : '';
 					<td>NOMBRE</td>
 					<td>CANTIDAD</td>
 					<td>COSTO</td>
-					<td>SELECCION</td>
+					<td title="SELECCIONE LOS REGISTROS QUE DESEA ELIMINAR">SELECCION</td>
 					<!------------------------------------------------Botones Dentro de Tabla--------------------------------------------------------------------------------- 
 					<td>Eliminar </td> <td>Actualizar</td>---->
 				</tr>
@@ -97,7 +97,7 @@ $hotelid = isset($_GET['hotelid']) ? $_GET['hotelid'] : '';
 							echo "<td>" . $row["nombre"] . "</td>";
 							echo "<td>" . $row["cantidad"] . "</td>";
 							echo "<td>" . $row["costo"] . "</td>";
-							echo "<td><input type='checkbox' name='eliminar[]' value='" . $row["idTipo"] . "'></td>"; // Agregar una columna con una casilla de verificación
+							echo "<td title='SELECCIONE LOS REGISTROS QUE DESEA ELIMINAR'><input type='checkbox' name='eliminar[]' value='" . $row["idTipo"] . "'></td>"; // Agregar una columna con una casilla de verificación
 							echo "</tr>";
 						}
 				?>

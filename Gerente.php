@@ -43,7 +43,7 @@ function updateValue2() {
 
 </head>
 
-<body style="background: url('./src/assets/Fondo5.jpg') no-repeat; background-position: center; background-size: cover;">
+<body style="background: url('./src/assets/Fondo3.jpg') no-repeat; background-position: center; background-size: cover;">
 
 	<div style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: center; color: white; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 35px;">
 		BIENVENIDO A SEDIH
@@ -115,13 +115,13 @@ function updateValue2() {
 		</table>
 	</div>
 
-	<div class="d-flex justify-content-center">
+	<div class="d-flex justify-content-center" style="margin-bottom:10px">
 		<div class="col-2" style="margin-right: 20px">
 			<button type="submit" class="btn btn-primary" value="borrar" name="accion">Eliminar</button>
 		</div>
 	
-		<div class="col-2">
-			<button type="submit" class="btn btn-primary" value="actualizar" name="accion">Actualizar</button>
+		<div class="col-3">
+			<button type="submit" class="btn btn-primary" value="actualizar" name="accion">Control de registros</button>
 		</div>
 	</div>
 	
