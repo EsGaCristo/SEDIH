@@ -20,5 +20,5 @@ $resultado = mysqli_query($conexion, $insertar);
 if ($resultado) {
   header("location: Capturista.php?hotelid=$id");
 }
-
+  
 ?>
