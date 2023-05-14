@@ -123,3 +123,7 @@ button{
 .form-label{
     color: white;
 }
+
+.abbr-no-underline {
+    text-decoration: none !important; /* Quita las líneas punteadas */
+  }

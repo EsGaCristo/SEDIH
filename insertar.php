@@ -18,7 +18,12 @@ $update = mysqli_query($conexion, $actualizar);
 $resultado = mysqli_query($conexion, $insertar);
 
 if ($resultado) {
-  header("location: Capturista.php?hotelid=$id");
+  echo '<script>
+  alert("Los datos se han registrado correctamente.");
+  setTimeout(function() {
+    window.location.href = "Capturista.php?hotelid=' . $id . '";
+  }, 50); // espera 3 segundos antes de redirigir
+  </script>';
 }
   
 ?>

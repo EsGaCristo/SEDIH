@@ -17,15 +17,17 @@
                     header("location: ../Capturista.php?hotelid=$hotelid");
                 }else if($datos ->tipo ==3){
                     $hotelid= $datos -> idHotel;
-                    header("location: ../Gerente.php?hotelid=$hotelid");;
+                    header("location: ../Gerente.php?hotelid=$hotelid");
                 }
             } else {
-                echo '
-                    <script>
-                    alert("Usuario no existente verifique los datos");
-                    </script>
-                    ';
-            }
+                    echo '<script>
+                    alert("Usuario no existente, verifique los datos.");
+                    setTimeout(function() {
+                      window.location.href = "../index.php";
+                    }, 50); // espera 3 segundos antes de redirigir
+                    </script>';
+            
+                }
         }
     } 
 ?>
