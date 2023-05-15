@@ -8,15 +8,24 @@ $resultado = $mysqli->query("SELECT * FROM habitacion where idHotel = '$hotelid'
 <html lang="en">
 
 <head>
+	<script>
+		function validateMotivo() {
+			var motivoVisita = document.forms[1].Motivo.value;
+			if (motivoVisita == 0) {
+				alert("Por favor, selecciona un motivo de visita.");
+				return false;
+			}
+		}
+	</script>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Gerente</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 	<link rel="stylesheet" href="index.css">
 </head>
-<body style="background: url('./src/assets/Fondo4.jpg') no-repeat; background-position: center; background-size: cover;">
-
+<body style="background: url('./src/assets/Fondo4.jpg') no-repeat; center center fixed; background-size: cover;">
+	
 	<div
 		style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: center; color: white; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 35px;">
 		BIENVENIDO A SEDIH</div>
@@ -30,7 +39,16 @@ $resultado = $mysqli->query("SELECT * FROM habitacion where idHotel = '$hotelid'
 		style="background: transparent; border-radius: 20px; backdrop-filter: blur(10px); text-align: CENTER; color: WHITE; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 25px;"
 		class="col-12 mt-3">CONTROL DE REGISTROS</div>
 		<div class="col-12 mt-3">
-			<div style="background-color: transparent;" class ='responsive'>
+		<div style="background-color: transparent; overflow-x: auto;" class="table-wrapper">
+					<style>
+						.table-wrapper {
+							height: 230px; /* Altura máxima de la tabla /
+							overflow-y: scroll; / Agrega un scroll vertical */
+						}
+						table {
+							width: 100%;
+						}
+					</style>
 				<table style="color: white; width: 100%;" class='table'>
 					<tr style='text-align: center;' >
 						<td>ID</td>
@@ -66,7 +84,7 @@ $resultado = $mysqli->query("SELECT * FROM habitacion where idHotel = '$hotelid'
 	<div class="col-12 mt-3;" style=" margin-left: auto; margin-right: auto">
 	<form class="row g-3 mx-auto"
 	style="max-width: 800px; margin-top: 20px; background: transparent; border-radius: 20px; backdrop-filter: blur(65px);"
-	action="validarOpcionGerente.php?id=<?php echo $hotelid ?>">
+	action="validarOpcionGerente.php?id=<?php echo $hotelid ?>" method="post" onsubmit="return validateMotivo()">
 		<div
 			style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: CENTER; color: WHITE; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 25px;">
 			ACTUALIZAR</div>
@@ -82,9 +100,9 @@ $resultado = $mysqli->query("SELECT * FROM habitacion where idHotel = '$hotelid'
 			</tr>
 
 			<tr>
-				<td><input type="text" class="form-control" name="idRegistro"></td>
-				<td><input type="date" class="form-control" name="fEntrada"></td>
-				<td><input type="date" class="form-control" name="fSalida"></td>
+				<td><input type="text" class="form-control" name="idRegistro" required></td>
+				<td><input type="date" class="form-control" name="fEntrada" required></td>
+				<td><input type="date" class="form-control" name="fSalida" required></td>
 				<td>						
 					<select class="form-select" aria-label="Default select example" name="Motivo" id = "Motivo" required>
 					<option id="0" value="0" selected="selected">Seleccionar</option>
@@ -92,7 +110,7 @@ $resultado = $mysqli->query("SELECT * FROM habitacion where idHotel = '$hotelid'
 					<option value="NEGOCIOS">NEGOCIOS</option>
 					</select>
 				</td>
-				<td><input type="text" class="form-control" name="Lugar"></td>
+				<td><input type="text" class="form-control" name="Lugar" required></td>
 			</tr>
 		</table>
 		<div class="col-3" style="float: center; text-align: center; margin-top: 15px; margin-bottom: 200 px;">

@@ -146,7 +146,16 @@ function updateValue2() {
 		HABITACION
 	</div>
 	<div class="col-12 mt-3">
-		<div class="table-responsive">
+	<div style="background-color: transparent; overflow-x: auto;" class="table-wrapper">
+					<style>
+						.table-wrapper {
+							height: 250px; /* Altura máxima de la tabla /
+							overflow-y: scroll; / Agrega un scroll vertical */
+						}
+						table {
+							width: 100%;
+						}
+					</style>
 			<table style="color: white; width: 100%;" class="table">
 				<tr style='text-align: center;'>
 					<th>ID</th>
