@@ -25,5 +25,5 @@ if ($resultado) {
   }, 50); // espera 3 segundos antes de redirigir
   </script>';
 }
-
+  
 ?>
