@@ -149,17 +149,16 @@ $resultado = $mysqli->query("SELECT * FROM hotel ");
 			CONTROL DE HOTELES Y USUARIOS</div>
 
 		<div style="background-color: transparent ;" >
-		<div class="table-responsive" style="max-width: 100%;">
+		<div class="table-responsive"  style="display: flex; justify-content: center;" id="TablaHoteles">
 <!--------------------------------TABLA DE HOTELES--------------------------------------------------------------------------------------------------------->
-			<table style="color: white; width: 100%; margin-right: auto; margin-top: auto;" id="TablaHoteles" class="table" >
+			<table style="color: white; width: 100%; margin-left: auto; margin-right: auto; "  class="table" >
 				<tr style='text-align: center;'>
 					<td>ID</td>
 					<td>NOMBRE</td>
 					<td>CATEGORIA</td>
+					
 					<td>DOMICILIO</td>
-					<td>OCUPACION</td>
 					<td>UBICACION</td>
-					<td>NUMERO DE HABITACIONES</td>
 					<td title='SELECCIONE LOS REGISTROS QUE DESEA ELIMINAR'>SELECCIÓN</td>
 	
 				</tr>
@@ -175,9 +174,7 @@ $resultado = $mysqli->query("SELECT * FROM hotel ");
 					echo "<td>" . $row["nombre"] . "</td>";
 					echo "<td>" . $row["categoria"] . "</td>";
 					echo "<td>" . $row["domicilio"] . "</td>";
-					echo "<td>" . $row["ocupacion"] . "</td>";
 					echo "<td>" . $row["ubicacion"] . "</td>";
-					echo "<td>" . $row["noHabitaciones"] . "</td>";
 					echo "<td title='SELECCIONE LOS REGISTROS QUE DESEA ELIMINAR'><input type='checkbox' name='eliminar[]' value='" . $row["idHotel"] . "'></td>"; // Agregar una columna con una casilla de verificación
 					echo "</tr>";
 				}
@@ -230,15 +227,16 @@ $resultado = $mysqli->query("SELECT * FROM hotel ");
 			<div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3 mb-3">
 				<button type="submit" class="btn btn-primary"  value="borrarusuarios" id="borrarUsuarios" name="accion3" disabled>Borrar usuarios</button>
 			</div>
-
 		</div>
 	</form>
 </div>	
 
+<div class="container mt-3">
 	<div class="col-8" style=" display: flex; text-align: center; margin-left: 195px; margin-top: 15px; margin-bottom: 0 px;" >
 		<button id="boton" type="button" class="btn btn-primary" style="margin-right: 10px; display: inline-block; margin-left: 70px;">Cambiar Tabla</button>
 		<button type="button" class="btn btn-primary" onclick="window.location.href='index.php';" style="display: inline-block; margin-left: 15px; margin-right: 30px;">Salir</button>
 	</div>
+</div>
 
 	<script>
 		var tabla1 = document.getElementById("TablaHoteles");
@@ -256,7 +254,7 @@ $resultado = $mysqli->query("SELECT * FROM hotel ");
 			boton1.disabled = true;
 			boton2.disabled = false;
 			} else {
-			tabla1.style.display = "block";
+			tabla1.style.display = "flex";
 			tabla2.style.display = "none";
 			etiqueta.innerHTML = "Hoteles";
 			boton2.disabled = true;

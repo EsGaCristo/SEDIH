@@ -8,8 +8,8 @@ $idHabitacion = $_POST['idHab'];
 $tipoHabitacion = $_POST['tipoHab'];
 $motivoVisita = $_POST['motVis'];
 
-$insertar = "INSERT INTO registrocliente (idRegistro, fechaHRegistro, fechaSalida, motivoVisita, lugarProcedencia, idHabitacion, tipoHabitacion) 
-    VALUES ('','$fechaReg','$fechaSal', '$motivoVisita','$lugarProce','$idHabitacion',$tipoHabitacion)";
+$insertar = "INSERT INTO registrocliente (idRegistro, fechaHRegistro, fechaSalida, motivoVisita, lugarProcedencia, idHabitacion, tipoHabitacion,idHotel) 
+    VALUES ('','$fechaReg','$fechaSal', '$motivoVisita','$lugarProce','$idHabitacion',$tipoHabitacion,$id)";
 
 $actualizar = "UPDATE habitacion set estado = 'OCUPADO' WHERE codigoHabitacion = '$idHabitacion' ";
 $update = mysqli_query($conexion, $actualizar);

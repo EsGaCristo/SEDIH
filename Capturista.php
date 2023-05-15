@@ -3,6 +3,17 @@ include("src/database/conexion_bd.php");
 $mysqli = new mysqli("localhost", "root", "", "sedih", "3306");
 $hotelid = isset($_GET['hotelid']) ? $_GET['hotelid'] : '';
 $resultado = $mysqli->query("SELECT idTipo , nombre FROM tipoHabitacion where idHotel = '$hotelid' ");
+
+//Actualizar ocupado a disponible si ya pasó la fecha de salida
+$ayer = date('Y/m/d', strtotime('-2 day'));
+$sqlup = "UPDATE habitacion SET estado  = 'DISPONIBLE' WHERE codigoHabitacion IN 
+(SELECT idHabitacion from registrocliente where fechaSalida = '$ayer')";
+
+if (mysqli_query($conexion, $sqlup)) {
+
+} else {
+    echo "Error en la actualización: " . mysqli_error($conexion);
+}
 ?>
 
 <!DOCTYPE html>
@@ -35,8 +46,8 @@ $resultado = $mysqli->query("SELECT idTipo , nombre FROM tipoHabitacion where id
 	<link rel="stylesheet" href="index.css">
 
 </head>
-<body style="background: url('./src/assets/Fondo3.jpg') no-repeat; background-position: center; background-size: cover;">
-	<div style=" border-radius: 20px; margin-bottom:  20 px; backdrop-filter: blur(0px); text-align: center; color: white; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 35px;">
+<body style="background: url('./src/assets/Fondo3.jpg') no-repeat; center center fixed; background-size: cover;">
+		<div style=" border-radius: 20px; margin-bottom:  20 px; backdrop-filter: blur(0px); text-align: center; color: white; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 35px;">
 		BIENVENIDO A SEDIH
 	</div>
 
@@ -49,7 +60,7 @@ $resultado = $mysqli->query("SELECT idTipo , nombre FROM tipoHabitacion where id
 		echo '<div class="col-12 mt-3" style="margin-left: auto; margin-right: auto; border-radius: 20px; backdrop-filter: blur(35px); text-align: center; color: white; font-family: Impact, Haettenschweiler, Arial Narrow Bold, sans-serif; font-size: 35px; letter-spacing: 3px;">Hotel ' . $valores['nombre'] .'</div>';
 	}
 	?>
-	<p style="text-align: center;">Ingresa los datos para el registro de clientes</p>
+	<p style="text-align: center;">Ingresa los datos para el registro de Huespedes</p>
 	<div class="row">
 		<div class="col-md-6">
 			<label for="inputEmail4" class="form-label">Fecha de registro</label>
