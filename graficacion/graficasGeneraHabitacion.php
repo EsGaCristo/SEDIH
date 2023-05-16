@@ -60,10 +60,7 @@ if (isset($_POST["fechaConsulta"])) {
             <button type="submit" id="guardar-btn">Graficar</button>
         </form>
     </div>
-    <div
-        style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: center; color: white; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 35px;">
-        VENTANA DE ESTADISTICAS
-    </div>
+    
 
 
 
@@ -84,11 +81,9 @@ if (isset($_POST["fechaConsulta"])) {
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
-
         var consultaGeneral = <?php echo json_encode($resultados); ?>;
         var columnas = [];
         var datos = [];
-
         consultaGeneral.forEach((object) => {
             //console.log(`tipoHabitacion: ${object.tipoHabitacion} , nivel: ${object.nivelHabitacion}`);
             columnas.push(`Tipo Habitacion : ${object.tipoHabitacion}`)
