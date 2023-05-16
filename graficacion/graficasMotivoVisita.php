@@ -148,7 +148,7 @@ if (isset($_POST["fechaConsulta"])) {
 
     </script>
 
-    <form class="col-md-11" style="display: flex; justify-content: center; align-items: center;">
+    <form class="col-md-11" action="../Gerente.php?hotelid=<?php echo $id ?>" method="POST" style="display: flex; justify-content: center; align-items: center;">
         <div class="col-13" >
             <button type="submit" class="btn btn-primary" value="Salir" name="accion2" >
                 Regresar
