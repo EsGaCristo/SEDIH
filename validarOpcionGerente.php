@@ -142,6 +142,14 @@ if (isset($_POST['accion2'])) {
     header("location: Gerente.php?hotelid=$id");
   }
 
+  if($_POST['accion2'] == 'verEstadisticas'){
+    $id = $_GET['id'];
+    header("location: Estadisticas.php?hotelid=$id");
+  }
+
+
+
+
   if($_POST['accion2'] == 'SaveCantHab'){
     $id = $_GET['id'];
     if (empty($_POST['cantidadHabitaciones'])) {
