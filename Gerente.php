@@ -55,7 +55,7 @@ function updateValue2() {
 </head>
 
 <body style="background: url('./src/assets/Fondo3.jpg') no-repeat; center center fixed; background-size: cover;">
-	<div style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: center; color: white; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 35px;">
+	<div style="background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: center; color: white; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 35px;">
 		BIENVENIDO A SEDIH
 	</div>
 
@@ -159,7 +159,8 @@ function updateValue2() {
 			</button>
 		</div>
 	</form>
-</div>
+	</div>
+
 </body>
 
 </html>
