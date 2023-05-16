@@ -34,9 +34,10 @@ if (isset($_POST["fechaConsulta"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ESTADISTICAS</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="index.css">
+    
     <style>
         /* Estilos para la navegación con tabs */
         .nav-tabs {
@@ -44,21 +45,24 @@ if (isset($_POST["fechaConsulta"])) {
         margin: 0;
         padding: 0;
         display: flex;
-        justify-content: center;
+        justify-content: center;   
+        font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 20px;   
+        color: white;  
         }
         .nav-tabs li {
         display: inline-block;
         }
         .nav-tabs li a {
         display: block;
-        padding: 10px 15px;
+        padding: 15px 20px;
         text-decoration: none;
-        color: #666;
+        color: white;
         border: 1px solid #666;
         }
         .nav-tabs li.active a {
-        background-color: #666;
-        color: #fff;
+        background-color: white;
+        color: white;
         }
   </style>
 
@@ -95,18 +99,12 @@ if (isset($_POST["fechaConsulta"])) {
                     <option value="<?php echo $row['fecha']; ?>"><?php echo $row['fecha']; ?></option>
                 <?php endwhile; ?>
             </select>
-            <button type="submit" id="guardar-btn">Graficar</button>
+            <button type="submit" id="guardar-btn" style="margin-left: 10px;" class="btn btn-primary">Graficar</button>
         </form>
     </div>
-    <div
-        style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: center; color: white; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 35px;">
-        VENTANA DE ESTADISTICAS
-    </div>
 
 
-
-
-    <div style="width: 500px; height: 250px; display: flex; margin-left: 500px;">
+    <div style="width: 500px; height: 250px; display: flex; margin-left: 500px; background-color: white; padding: 10px; margin-top: 20px;">
         <canvas id="chart1"></canvas>
     </div>
 
@@ -114,49 +112,51 @@ if (isset($_POST["fechaConsulta"])) {
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
-        var consultaGeneral = <?php echo json_encode($resultados); ?>;
-        var columnas = [];
-        var datos = [];
-        consultaGeneral.forEach((object) => {
-            //console.log(`tipoHabitacion: ${object.tipoHabitacion} , nivel: ${object.nivelHabitacion}`);
-            columnas.push(`Tipo Habitacion : ${object.tipoHabitacion}`)
-            datos.push(object.nivelOcupacion);
-        });
+    var consultaGeneral = <?php echo json_encode($resultados); ?>;
+    var columnas = [];
+    var datos = [];
+    consultaGeneral.forEach((object) => {
+        //console.log(`tipoHabitacion: ${object.tipoHabitacion} , nivel: ${object.nivelHabitacion}`);
+        columnas.push(`Tipo Habitacion : ${object.tipoHabitacion}`)
+        datos.push(object.nivelOcupacion);
+    });
 
-        // Datos de la primera gráfica
-        const data1 = {
-            labels: columnas,
-            datasets: [{
-                label: '% de Tarifas',
-                data: datos,
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 1
-            }]
-        };
+    // Datos de la primera gráfica
+    const data1 = {
+        labels: columnas,
+        datasets: [{
+            label: '% de Tarifas',
+            data: datos,
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+        }]
+    };
 
-        // Configuración de la primera gráfica
-        const config1 = {
-            type: 'bar',
-            data: data1,
-            options: {}
-        };
+    // Configuración de la primera gráfica
+    const config1 = {
+        type: 'bar',
+        data: data1,
+        options: {}
+    };
 
-        // Crear la primera gráfica
-        const chart1 = new Chart(
-            document.getElementById('chart1'),
-            config1
-        );
+    // Crear la primera gráfica
+    const chart1 = new Chart(
+        document.getElementById('chart1'),
+        config1
+    );
 
-    </script>
+</script>
 
-    <form class="col-md-11" action="../Gerente.php?hotelid=<?php echo $id ?>" method="POST" style="display: flex; justify-content: center; align-items: center;">
-        <div class="col-md-11" >
+
+    <form class="col-md-11" action="../Gerente.php?hotelid=<?php echo $id ?>" method="POST" style="display: flex; justify-content: center; align-items: center; margin-top: 10px;">
+        <div class="col-13" >
             <button type="submit" class="btn btn-primary" value="Salir" name="accion2" >
                 Regresar
             </button>
         </div>
     </form>
+
 
 
 
