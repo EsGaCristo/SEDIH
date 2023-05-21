@@ -34,18 +34,19 @@ function updateValue2() {
 
 <script>
 	function updateValue() {
-		var hotelDiv =document.getElementById("nombreHotelito").textContent;
-		hotelDiv = hotelDiv.replace("Hotel: ","").replace(" ","-");
-		var input1Value = document.getElementById("input1").value;
-		document.getElementById("input2").value =  hotelDiv + "-"+input1Value ;
-		
-		if(input1Value < 10){
-			document.getElementById("input2").value = hotelDiv + "-0"+input1Value ;
-		}else{
-			document.getElementById("input2").value = hotelDiv + "-"+input1Value ;
-		}
-	
-		}
+    var input1Value = document.getElementById("input1").value;
+    
+    if (input1Value < 0) {
+        // Establece el valor del input en 0 si se ingresa un número negativo
+        document.getElementById("input1").value = 1;
+        input1Value = 0;
+    }
+    
+    var hotelDiv = document.getElementById("nombreHotelito").textContent;
+    hotelDiv = hotelDiv.replace("Hotel: ", "").replace(" ", "-");
+    var formattedValue = input1Value < 10 ? "0" + input1Value : input1Value;
+    document.getElementById("input2").value = hotelDiv + "-" + formattedValue;
+	}
 
 	function validaEstadoTipo() {
 	var th = document.forms[0].tipoHabitacion.value;
