@@ -2,7 +2,7 @@
 include("../src/database/conexion_bd.php");
 include("../crud/controlador.php");
 $mysqli = new mysqli("localhost", "root", "", "sedih", "3306");
-$id = 1;
+$id = isset($_GET['id']) ? $_GET['id'] : '';
 $categoria = $mysqli->query("SELECT DISTINCT categoria FROM registroocupacion WHERE idHotel = '$id'")->fetch_object()->categoria;
 
 //consulta general debe hacerse despues de presionar un boton
@@ -83,10 +83,10 @@ if (isset($_POST["fechaConsulta"])) {
 	</div>
 
     <ul class="nav-tabs">
-        <li><a href="./graficasCostoOcupacionCategoria.php">Costo x Ocupacion</a></li>
-        <li><a href="./graficasCostoPromedio.php">Costo x Promedio</a></li>
-        <li><a href="./graficasGeneraHabitacion.php">Genera Habitacion</a></li>
-        <li><a href="./graficasMotivoVisita.php">Visita Del Motivo</a></li>
+        <li><a href="./graficasCostoOcupacionCategoria.php?id=<?php echo $id ?>">Costo x Ocupacion</a></li>
+        <li><a href="./graficasCostoPromedio.php?id=<?php echo $id ?>">Costo x Promedio</a></li>
+        <li><a href="./graficasGeneraHabitacion.php?id=<?php echo $id ?>">Genera Habitacion</a></li>
+        <li><a href="./graficasMotivoVisita.php?id=<?php echo $id ?>">Visita Del Motivo</a></li>
     </ul>
 
 

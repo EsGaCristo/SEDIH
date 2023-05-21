@@ -2,12 +2,12 @@
 include("../src/database/conexion_bd.php");
 include("../crud/controlador.php");
 $mysqli = new mysqli("localhost", "root", "", "sedih", "3306");
-$id = 1;
+$id = isset($_GET['id']) ? $_GET['id'] : '';
 
 //consulta general debe hacerse despues de presionar un boton
 if (isset($_POST["fechaConsulta"])) {
     $fechaConsulta = $_POST["fechaConsulta"];
-    
+
 
     $consultaGeneral = $mysqli->query("SELECT motivoVisita, SUM(1) as total
     FROM registrocliente r
@@ -40,53 +40,59 @@ if (isset($_POST["fechaConsulta"])) {
     <style>
         /* Estilos para la navegación con tabs */
         .nav-tabs {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;   
-        font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-        font-size: 20px;   
-        color: white;  
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 20px;
+            color: white;
         }
+
         .nav-tabs li {
-        display: inline-block;
+            display: inline-block;
         }
+
         .nav-tabs li a {
-        display: block;
-        padding: 15px 20px;
-        text-decoration: none;
-        color: white;
-        border: 1px solid #666;
+            display: block;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: white;
+            border: 1px solid #666;
         }
+
         .nav-tabs li.active a {
-        background-color: white;
-        color: white;
+            background-color: white;
+            color: white;
         }
-  </style>
+    </style>
 
 </head>
 
 <body style="background: url('../src/assets/Fondo3.jpg') no-repeat; center center fixed; background-size: cover;">
 
-    <div style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: center; color: white; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 35px;">
+    <div
+        style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: center; color: white; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 35px;">
         BIENVENIDO SEDIH
-	</div>
+    </div>
 
     <ul class="nav-tabs">
-        <li><a href="./graficasCostoOcupacionCategoria.php">Costo x Ocupacion</a></li>
-        <li><a href="./graficasCostoPromedio.php">Costo x Promedio</a></li>
-        <li><a href="./graficasGeneraHabitacion.php">Genera Habitacion</a></li>
-        <li><a href="./graficasMotivoVisita.php">Visita Del Motivo</a></li>
+        <li><a href="./graficasCostoOcupacionCategoria.php?id=<?php echo $id ?>">Costo x Ocupacion</a></li>
+        <li><a href="./graficasCostoPromedio.php?id=<?php echo $id ?>">Costo x Promedio</a></li>
+        <li><a href="./graficasGeneraHabitacion.php?id=<?php echo $id ?>">Genera Habitacion</a></li>
+        <li><a href="./graficasMotivoVisita.php?id=<?php echo $id ?>">Visita Del Motivo</a></li>
     </ul>
 
-    <div style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: center; color: white; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 35px;">
+    <div
+        style=" background: transparent; border-radius: 20px;  backdrop-filter: blur(10px); text-align: center; color: white; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 35px;">
         Estadisticas de tu misma categoria
-	</div>
+    </div>
 
     <div class="col-md-11">
-        <form id="miFormulario" method="POST" style="display: flex; justify-content: center; align-items: center;"> 
-            <select class="form-select" aria-label="Default select example" id="fechaConsulta" name="fechaConsulta" required style="margin-left: 100px; margin-right: 20px;">
+        <form id="miFormulario" method="POST" style="display: flex; justify-content: center; align-items: center;">
+            <select class="form-select" aria-label="Default select example" id="fechaConsulta" name="fechaConsulta"
+                required style="margin-left: 100px; margin-right: 20px;">
                 <option value="0">Seleccionar</option>
                 <option value="1">Enero</option>
                 <option value="2">Febrero</option>
@@ -101,11 +107,12 @@ if (isset($_POST["fechaConsulta"])) {
                 <option value="11">Noviembre</option>
                 <option value="12">Diciembre</option>
             </select>
-            <button type="submit" id="guardar-btn" class="btn btn-primary" >Graficar</button>
+            <button type="submit" id="guardar-btn" class="btn btn-primary">Graficar</button>
         </form>
     </div>
 
-    <div style="width: 500px; height: 250px; display: flex; margin-left: 500px; background-color: white; padding: 10px; margin-top: 20px;">
+    <div
+        style="width: 500px; height: 250px; display: flex; margin-left: 500px; background-color: white; padding: 10px; margin-top: 20px;">
         <canvas id="chart1"></canvas>
     </div>
 
@@ -113,9 +120,9 @@ if (isset($_POST["fechaConsulta"])) {
     <script>
 
         //** METER ESTO EN UN IF **//
-        
+
         var consultaGeneral = <?php echo json_encode($resultados); ?>;
-        
+
         var columnas = [];
         var datos = [];
         consultaGeneral.forEach((object) => {
@@ -151,9 +158,10 @@ if (isset($_POST["fechaConsulta"])) {
 
     </script>
 
-    <form class="col-md-11" action="../Gerente.php?hotelid=<?php echo $id ?>" method="POST" style="display: flex; justify-content: center; align-items: center; margin-top: 10px;">
-        <div class="col-13" >
-            <button type="submit" class="btn btn-primary" value="Salir" name="accion2" >
+    <form class="col-md-11" action="../Gerente.php?hotelid=<?php echo $id ?>" method="POST"
+        style="display: flex; justify-content: center; align-items: center; margin-top: 10px;">
+        <div class="col-13">
+            <button type="submit" class="btn btn-primary" value="Salir" name="accion2">
                 Regresar
             </button>
         </div>
